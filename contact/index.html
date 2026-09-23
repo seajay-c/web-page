@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Cyprus Communications — form, support hours, and regional offices (demo).">
+  <title>Contact | Cyprus Communications</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="../styles/layout.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/traditional.css">
+</head>
+<body data-page="contact">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="../index.html">Cyprus <span>Communications</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+      <nav class="nav-primary" id="primary-nav" aria-label="Primary">
+        <ul class="nav-primary__list">
+          <li><a href="../index.html" data-nav="home">Home</a></li>
+          <li><a href="../services/index.html" data-nav="services">Services</a></li>
+          <li><a href="../about/index.html" data-nav="about">About</a></li>
+          <li><a href="../careers/index.html" data-nav="careers">Careers</a></li>
+          <li><a href="index.html" data-nav="contact">Contact</a></li>
+        </ul>
+        <div class="nav-utility">
+          <a href="../careers/index.html">Careers</a>
+          <a class="btn btn--primary" href="index.html">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page-shell">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../index.html">Home</a></li>
+        <li><span aria-current="page">Contact</span></li>
+      </ol>
+    </nav>
+
+    <header class="page-header">
+      <h1>Contact</h1>
+      <p class="lede">Reach support, sales, or visit a regional office. The form validates in-browser only — no messages are delivered.</p>
+    </header>
+
+    <div class="layout-split">
+      <div>
+        <section class="section-block" aria-labelledby="support-hours">
+          <h2 id="support-hours">Support hours</h2>
+          <ul class="info-list">
+            <li><strong>Phone</strong><span>Mon–Sat 08:00–20:00 EET · <a href="tel:+35722123456">+357 22 123 456</a></span></li>
+            <li><strong>Chat</strong><span>Daily 09:00–18:00 via the fictional app</span></li>
+            <li><strong>Email</strong><span><a href="mailto:support@cypruscomm.demo">support@cypruscomm.demo</a> · reply within 1 business day (demo)</span></li>
+          </ul>
+        </section>
+
+        <section class="section-block" aria-labelledby="contact-form-heading">
+          <h2 id="contact-form-heading">Send a message</h2>
+
+          <div class="alert alert--success" data-form-success data-for="contact-form" hidden tabindex="-1" role="status">
+            Message validated locally. In a production site this would be emailed to our team — here nothing was sent.
+          </div>
+
+          <form class="form" id="contact-form" data-validate="demo" novalidate>
+            <div class="form-field">
+              <label for="name">Name <span class="required-marker" aria-hidden="true">*</span></label>
+              <input type="text" id="name" name="name" required aria-required="true" autocomplete="name">
+              <span class="field-error" role="alert"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="email">Email <span class="required-marker" aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email" required aria-required="true" autocomplete="email">
+              <span class="field-error" role="alert"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="topic">Topic <span class="required-marker" aria-hidden="true">*</span></label>
+              <select id="topic" name="topic" required aria-required="true">
+                <option value="">Select a topic</option>
+                <option value="residential">Residential plans</option>
+                <option value="business">Business connectivity</option>
+                <option value="support">Technical support</option>
+                <option value="press">Press &amp; media</option>
+                <option value="other">Other</option>
+              </select>
+              <span class="field-error" role="alert"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="message">Message <span class="required-marker" aria-hidden="true">*</span></label>
+              <textarea id="message" name="message" required aria-required="true" maxlength="3000"></textarea>
+              <span class="field-error" role="alert"></span>
+            </div>
+
+            <button class="btn btn--primary" type="submit">Send message</button>
+          </form>
+        </section>
+
+        <section class="section-block" aria-labelledby="offices">
+          <h2 id="offices">Regional offices</h2>
+          <div class="office-grid">
+            <article class="office-card">
+              <h3>Nicosia HQ</h3>
+              <p>12 Makarios Avenue<br>Nicosia 1065</p>
+              <a href="tel:+35722123456">+357 22 123 456</a>
+            </article>
+            <article class="office-card">
+              <h3>Limassol NOC</h3>
+              <p>4 Poseidonos Street<br>Limassol 3012</p>
+              <a href="tel:+35725111222">+357 25 111 222</a>
+            </article>
+            <article class="office-card">
+              <h3>Larnaca Retail</h3>
+              <p>88 Archiepiskopou Makariou III<br>Larnaca 6017</p>
+              <a href="tel:+35724133444">+357 24 133 444</a>
+            </article>
+            <article class="office-card">
+              <h3>Paphos Hub</h3>
+              <p>22 Tombs of the Kings Ave<br>Paphos 8046</p>
+              <a href="tel:+35726155666">+357 26 155 666</a>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <aside class="related-nav" aria-label="Helpful links">
+        <h2>Helpful links</h2>
+        <ul>
+          <li><a href="../services/index.html">Browse services</a></li>
+          <li><a href="../careers/index.html">Careers</a></li>
+          <li><a href="../sitemap.html">Site directory</a></li>
+        </ul>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div>
+        <h2>Cyprus Communications</h2>
+        <p>Demo telecom brand. All content is fictional.</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="../services/index.html">Services</a></li>
+          <li><a href="../about/index.html">About</a></li>
+          <li><a href="../careers/index.html">Careers</a></li>
+          <li><a href="index.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li>12 Makarios Avenue, Nicosia 1065</li>
+          <li><a href="tel:+35722123456">+357 22 123 456</a></li>
+          <li><a href="mailto:hello@cypruscomm.demo">hello@cypruscomm.demo</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Legal</h2>
+        <ul>
+          <li><a href="../sitemap.html">Site Directory</a></li>
+          <li><a href="../docs/README.md">Documentation</a></li>
+          <li>Privacy (demo stub)</li>
+          <li>Terms (demo stub)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__meta">
+      <span>&copy; 2026 Cyprus Communications (demo)</span>
+      <a href="../sitemap.html">Full site directory</a>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/forms.js"></script>
+</body>
+</html>

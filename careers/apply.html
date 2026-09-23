@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Apply for a demo role at Cyprus Communications — client-side form only.">
+  <title>Apply | Cyprus Communications</title>
+  <!--
+    Form best practices demo:
+      - Visible labels (not placeholder-only)
+      - required + aria-required
+      - Inline .field-error regions wired by js/forms.js
+      - Success alert with tabindex so it can receive focus
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="../styles/layout.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/traditional.css">
+</head>
+<body data-page="careers">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="../index.html">Cyprus <span>Communications</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+      <nav class="nav-primary" id="primary-nav" aria-label="Primary">
+        <ul class="nav-primary__list">
+          <li><a href="../index.html" data-nav="home">Home</a></li>
+          <li><a href="../services/index.html" data-nav="services">Services</a></li>
+          <li><a href="../about/index.html" data-nav="about">About</a></li>
+          <li><a href="index.html" data-nav="careers">Careers</a></li>
+          <li><a href="../contact/index.html" data-nav="contact">Contact</a></li>
+        </ul>
+        <div class="nav-utility">
+          <a href="index.html">Careers</a>
+          <a class="btn btn--primary" href="../contact/index.html">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page-shell">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="index.html">Careers</a></li>
+        <li><span aria-current="page">Apply</span></li>
+      </ol>
+    </nav>
+
+    <header class="page-header">
+      <h1>Apply</h1>
+      <p class="lede">Demo application form — nothing is uploaded or emailed. Validation runs entirely in the browser.</p>
+    </header>
+
+    <div class="layout-split">
+      <div>
+        <div class="alert alert--success" data-form-success data-for="apply-form" hidden tabindex="-1" role="status">
+          Thanks — your demo application was validated locally. No data was sent to a server.
+        </div>
+
+        <form class="form" id="apply-form" data-validate="demo" novalidate>
+          <div class="form-field">
+            <label for="full-name">Full name <span class="required-marker" aria-hidden="true">*</span></label>
+            <input type="text" id="full-name" name="fullName" required aria-required="true" autocomplete="name">
+            <span class="field-error" role="alert"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="email">Email <span class="required-marker" aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" required aria-required="true" autocomplete="email">
+            <span class="field-error" role="alert"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+357 …">
+            <span class="hint">Optional. Include country code if outside Cyprus.</span>
+            <span class="field-error" role="alert"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="role">Role <span class="required-marker" aria-hidden="true">*</span></label>
+            <select id="role" name="role" required aria-required="true">
+              <option value="">Select a role</option>
+              <option value="fiber-tech">Fiber Field Technician</option>
+              <option value="noc-l2">NOC Engineer (L2)</option>
+              <option value="retail-lead">Retail Store Lead</option>
+              <option value="pm-5g">Product Manager — 5G Consumer</option>
+              <option value="support">Bilingual Support Specialist</option>
+              <option value="general">General interest</option>
+            </select>
+            <span class="field-error" role="alert"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="cover">Cover note <span class="required-marker" aria-hidden="true">*</span></label>
+            <textarea id="cover" name="cover" required aria-required="true" maxlength="2000"></textarea>
+            <span class="hint">Share a short note (demo only — max 2000 characters).</span>
+            <span class="field-error" role="alert"></span>
+          </div>
+
+          <button class="btn btn--primary" type="submit">Submit application</button>
+        </form>
+      </div>
+
+      <aside class="related-nav" aria-label="Careers links">
+        <h2>Careers</h2>
+        <ul>
+          <li><a href="index.html">Open roles</a></li>
+          <li><a href="apply.html">Apply now</a></li>
+          <li><a href="../about/index.html">About the company</a></li>
+        </ul>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div>
+        <h2>Cyprus Communications</h2>
+        <p>Demo telecom brand. All content is fictional.</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="../services/index.html">Services</a></li>
+          <li><a href="../about/index.html">About</a></li>
+          <li><a href="index.html">Careers</a></li>
+          <li><a href="../contact/index.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li>12 Makarios Avenue, Nicosia 1065</li>
+          <li><a href="tel:+35722123456">+357 22 123 456</a></li>
+          <li><a href="mailto:hello@cypruscomm.demo">hello@cypruscomm.demo</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Legal</h2>
+        <ul>
+          <li><a href="../sitemap.html">Site Directory</a></li>
+          <li><a href="../docs/README.md">Documentation</a></li>
+          <li>Privacy (demo stub)</li>
+          <li>Terms (demo stub)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__meta">
+      <span>&copy; 2026 Cyprus Communications (demo)</span>
+      <a href="../sitemap.html">Full site directory</a>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/forms.js"></script>
+  <script>
+    // Prefill role from ?role= query when arriving from the listings page
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var role = params.get("role");
+      var select = document.getElementById("role");
+      if (role && select) {
+        var option = select.querySelector('option[value="' + role + '"]');
+        if (option) select.value = role;
+      }
+    })();
+  </script>
+</body>
+</html>

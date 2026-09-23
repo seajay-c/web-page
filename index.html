@@ -1,27 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyprus Communications</title>
-    <link rel="stylesheet" href="styles/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cyprus Communications — island-wide fiber, 5G, and business connectivity. Demo showcase site.">
+  <title>Cyprus Communications</title>
+  <!--
+    LANDING PAGE ONLY — Apple-inspired cinematic design.
+    All other pages use traditional corporate/telecom patterns (see docs/design-system.md).
+    CSS load order: tokens → base → layout → components → landing.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/landing.css">
 </head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <h1>Welcome to Cyprus Communications</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
-        </section>
-    </main>
-    <script src="script.js"></script>
+<!-- data-page drives active nav highlighting in js/main.js -->
+<body class="landing-page" data-page="home">
+  <!-- Skip link: first focusable control for keyboard users -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="index.html">Cyprus <span>Communications</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+      <nav class="nav-primary" id="primary-nav" aria-label="Primary">
+        <ul class="nav-primary__list">
+          <li><a href="index.html" data-nav="home">Home</a></li>
+          <li><a href="services/index.html" data-nav="services">Services</a></li>
+          <li><a href="about/index.html" data-nav="about">About</a></li>
+          <li><a href="careers/index.html" data-nav="careers">Careers</a></li>
+          <li><a href="contact/index.html" data-nav="contact">Contact</a></li>
+        </ul>
+        <div class="nav-utility">
+          <a href="careers/index.html">Careers</a>
+          <a class="btn btn--primary" href="contact/index.html">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!--
+      First viewport budget (locked): brand, one headline, one supporting
+      sentence, one CTA group, one dominant full-bleed image.
+      No cards, stats, overlay badges, or secondary marketing blocks.
+    -->
+    <section class="landing-hero" aria-label="Introduction">
+      <div class="landing-hero__content">
+        <p class="landing-hero__brand">Cyprus <span>Communications</span></p>
+        <h1>Connectivity that feels invisible.</h1>
+        <p class="landing-hero__support">Fiber, 5G, and business networks engineered for every shoreline of the island.</p>
+        <div class="btn-group">
+          <a class="btn btn--primary" href="services/index.html">Explore plans</a>
+          <a class="btn btn--ghost" href="about/index.html">Our story</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scroll story: coverage -->
+    <section class="landing-section landing-section--coverage" aria-labelledby="story-coverage">
+      <div class="landing-section__inner">
+        <div class="landing-section__copy">
+          <h2 id="story-coverage">Island-wide coverage</h2>
+          <p>From Kyrenia harbor to the Troodos slopes, our network is built for the places people actually live and work.</p>
+          <a class="btn btn--primary" href="about/achievements.html">See our milestones</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scroll story: speed -->
+    <section class="landing-section landing-section--speed landing-section--rtl" aria-labelledby="story-speed">
+      <div class="landing-section__inner">
+        <div class="landing-section__copy">
+          <h2 id="story-speed">Speed without the ceremony</h2>
+          <p>Multi-gig fiber and low-latency 5G so streaming, work, and play stay out of your way.</p>
+          <a class="btn btn--primary" href="services/fiber.html">View fiber plans</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scroll story: lifestyle -->
+    <section class="landing-section landing-section--lifestyle" aria-labelledby="story-lifestyle">
+      <div class="landing-section__inner">
+        <div class="landing-section__copy">
+          <h2 id="story-lifestyle">Always on, wherever you are</h2>
+          <p>Home, café, coastal office — one account that follows how Cypriots move through the day.</p>
+          <a class="btn btn--primary" href="services/mobile-5g.html">Explore 5G</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div>
+        <h2>Cyprus Communications</h2>
+        <p>Demo telecom brand for a static GitHub Pages showcase. All content is fictional.</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="services/index.html">Services</a></li>
+          <li><a href="about/index.html">About</a></li>
+          <li><a href="careers/index.html">Careers</a></li>
+          <li><a href="contact/index.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li>12 Makarios Avenue, Nicosia 1065</li>
+          <li><a href="tel:+35722123456">+357 22 123 456</a></li>
+          <li><a href="mailto:hello@cypruscomm.demo">hello@cypruscomm.demo</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Legal</h2>
+        <ul>
+          <li><a href="sitemap.html">Site Directory</a></li>
+          <li><a href="docs/README.md">Documentation</a></li>
+          <li>Privacy (demo stub)</li>
+          <li>Terms (demo stub)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__meta">
+      <span>&copy; 2026 Cyprus Communications (demo)</span>
+      <a href="sitemap.html">Full site directory</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <!-- Landing-only motion: hero fade + section IntersectionObserver reveals -->
+  <script src="js/landing-motion.js"></script>
 </body>
 </html>

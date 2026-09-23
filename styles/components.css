@@ -1,0 +1,320 @@
+/**
+ * components.css — Buttons, forms, cards, tables, alerts
+ * ---------------------------------------------------------------------------
+ * Reusable UI for traditional subpages. Landing page uses a subset (CTAs)
+ * but avoids card-heavy patterns in the first viewport by design rule.
+ */
+
+/* --- Buttons ------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0.7rem 1.25rem;
+  font-family: var(--font-body);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-semibold);
+  line-height: 1;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  transition: background var(--transition-fast), color var(--transition-fast),
+    border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn:hover {
+  text-decoration: none;
+}
+
+.btn--primary {
+  background: var(--color-cyan);
+  color: var(--color-navy-deep);
+}
+
+.btn--primary:hover {
+  background: var(--color-cyan-hover);
+  color: var(--color-navy-deep);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--color-navy);
+  border-color: var(--color-navy);
+}
+
+.btn--secondary:hover {
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-white);
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* --- Cards (subpages only — catalogs, jobs, offices) --------------------- */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: var(--space-5);
+}
+
+.card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.card h2,
+.card h3 {
+  font-size: var(--fs-h3);
+  margin: 0;
+}
+
+.card p {
+  color: var(--color-ink-muted);
+  margin: 0;
+  flex: 1;
+}
+
+.card__meta {
+  font-size: var(--fs-caption);
+  color: var(--color-ink-muted);
+}
+
+.card a.card__link {
+  font-weight: var(--fw-semibold);
+  text-decoration: none;
+  color: var(--color-navy);
+}
+
+.card a.card__link:hover {
+  color: var(--color-cyan-hover);
+}
+
+/* --- Tables -------------------------------------------------------------- */
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+}
+
+table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-small);
+}
+
+table.data-table th,
+table.data-table td {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+table.data-table th {
+  background: var(--color-offwhite);
+  font-weight: var(--fw-semibold);
+  color: var(--color-navy);
+}
+
+table.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* --- Forms --------------------------------------------------------------- */
+
+.form {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  max-width: 36rem;
+}
+
+.form-field {
+  margin-bottom: var(--space-4);
+}
+
+.form-field label {
+  display: block;
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-small);
+  margin-bottom: var(--space-2);
+  color: var(--color-navy);
+}
+
+.form-field .hint {
+  display: block;
+  font-size: var(--fs-caption);
+  color: var(--color-ink-muted);
+  font-weight: var(--fw-regular);
+  margin-top: var(--space-1);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  background: var(--color-white);
+  color: var(--color-ink);
+}
+
+.form-field textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.form-field.is-invalid input,
+.form-field.is-invalid select,
+.form-field.is-invalid textarea {
+  border-color: var(--color-error);
+  background: var(--color-error-bg);
+}
+
+.field-error {
+  display: none;
+  color: var(--color-error);
+  font-size: var(--fs-caption);
+  margin-top: var(--space-1);
+}
+
+.form-field.is-invalid .field-error {
+  display: block;
+}
+
+.required-marker {
+  color: var(--color-error);
+}
+
+/* --- Alerts -------------------------------------------------------------- */
+
+.alert {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  margin-bottom: var(--space-4);
+  font-size: var(--fs-small);
+}
+
+.alert--success {
+  background: var(--color-success-bg);
+  border-color: #a6d9bc;
+  color: var(--color-success);
+}
+
+.alert--error {
+  background: var(--color-error-bg);
+  border-color: #fecdca;
+  color: var(--color-error);
+}
+
+.alert[hidden] {
+  display: none;
+}
+
+/* --- Definition / info lists --------------------------------------------- */
+
+.info-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.info-list li {
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border);
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: var(--space-3);
+}
+
+.info-list strong {
+  color: var(--color-navy);
+  font-size: var(--fs-small);
+}
+
+/* --- FAQ ----------------------------------------------------------------- */
+
+.faq details {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-bottom: var(--space-3);
+}
+
+.faq summary {
+  font-weight: var(--fw-semibold);
+  color: var(--color-navy);
+  cursor: pointer;
+}
+
+.faq details p {
+  margin: var(--space-3) 0 0;
+  color: var(--color-ink-muted);
+}
+
+/* --- Timeline (achievements) --------------------------------------------- */
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-left: 2px solid var(--color-cyan);
+}
+
+.timeline li {
+  position: relative;
+  padding: 0 0 var(--space-5) var(--space-5);
+}
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -0.4rem;
+  top: 0.35rem;
+  width: 0.65rem;
+  height: 0.65rem;
+  background: var(--color-cyan);
+  border-radius: 50%;
+}
+
+.timeline time {
+  display: block;
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-semibold);
+  color: var(--color-cyan-hover);
+  margin-bottom: var(--space-1);
+}
+
+.timeline h3 {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--space-2);
+}
