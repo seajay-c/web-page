@@ -1,0 +1,313 @@
+/**
+ * layout.css — Traditional chrome: header, nav, breadcrumbs, footer, grids
+ * ---------------------------------------------------------------------------
+ * This is the default shell for ALL pages except where landing.css overrides
+ * the hero experience. Subpages rely on these patterns heavily; the landing
+ * page still uses the same header/footer for continuity.
+ */
+
+/* --- Site header --------------------------------------------------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  height: var(--header-height);
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: blur(10px);
+}
+
+.site-header__inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: 1.125rem;
+  color: var(--color-navy);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.logo span {
+  color: var(--color-cyan);
+}
+
+.nav-primary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.nav-primary__list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: var(--space-4);
+}
+
+.nav-primary__list a {
+  text-decoration: none;
+  color: var(--color-ink);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-small);
+  padding: var(--space-2) 0;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-primary__list a:hover,
+.nav-primary__list a[aria-current="page"] {
+  color: var(--color-navy);
+  border-bottom-color: var(--color-cyan);
+}
+
+.nav-utility {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.nav-utility a {
+  font-size: var(--fs-small);
+  text-decoration: none;
+  font-weight: var(--fw-medium);
+}
+
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-navy);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-small);
+}
+
+@media (max-width: 800px) {
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .nav-primary {
+    position: fixed;
+    inset: var(--header-height) 0 auto 0;
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--space-4) var(--space-5);
+    gap: var(--space-4);
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform var(--transition-base), opacity var(--transition-base);
+  }
+
+  .nav-primary.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-primary__list {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .nav-utility {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Primary nav already lists Careers; hide the utility text link on small screens */
+  .nav-utility > a:not(.btn) {
+    display: none;
+  }
+}
+
+/* --- Page shell (traditional) -------------------------------------------- */
+
+.page-shell {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5) var(--space-8);
+}
+
+.breadcrumbs {
+  font-size: var(--fs-caption);
+  color: var(--color-ink-muted);
+  margin-bottom: var(--space-5);
+}
+
+.breadcrumbs ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.breadcrumbs li:not(:last-child)::after {
+  content: "/";
+  margin-left: var(--space-2);
+  color: var(--color-border-strong);
+}
+
+.breadcrumbs a {
+  color: var(--color-ink-muted);
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+  color: var(--color-cyan-hover);
+}
+
+.breadcrumbs [aria-current="page"] {
+  color: var(--color-navy);
+  font-weight: var(--fw-medium);
+}
+
+.page-header {
+  margin-bottom: var(--space-6);
+  max-width: var(--prose-max);
+}
+
+.page-header h1 {
+  font-size: var(--fs-page-title);
+  margin-bottom: var(--space-3);
+}
+
+.page-header .lede {
+  color: var(--color-ink-muted);
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+/* Two-column: main + related sidebar */
+.layout-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 16rem;
+  gap: var(--space-7);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .layout-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.related-nav {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.related-nav h2 {
+  font-size: var(--fs-small);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-muted);
+  margin-bottom: var(--space-3);
+}
+
+.related-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.related-nav li + li {
+  margin-top: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border);
+}
+
+.related-nav a {
+  text-decoration: none;
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-small);
+}
+
+/* --- Footer -------------------------------------------------------------- */
+
+.site-footer {
+  background: var(--color-navy-deep);
+  color: rgba(255, 255, 255, 0.85);
+  padding: var(--space-7) var(--space-5) var(--space-5);
+  margin-top: auto;
+}
+
+.site-footer a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--color-cyan);
+}
+
+.site-footer__inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: var(--space-6);
+}
+
+.site-footer h2 {
+  color: var(--color-white);
+  font-size: var(--fs-small);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-3);
+}
+
+.site-footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-footer li + li {
+  margin-top: var(--space-2);
+}
+
+.site-footer__meta {
+  max-width: var(--page-max);
+  margin: var(--space-6) auto 0;
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: var(--fs-caption);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  justify-content: space-between;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Body stacking for sticky footer feel */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}

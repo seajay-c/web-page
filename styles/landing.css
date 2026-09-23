@@ -1,0 +1,222 @@
+/**
+ * landing.css — Apple-inspired cinematic styles for index.html ONLY
+ * ---------------------------------------------------------------------------
+ * Design rules enforced here:
+ *   - Brand-first first viewport (wordmark is hero-level, not just nav)
+ *   - One headline + one supporting line + one CTA group
+ *   - Full-bleed hero (edge-to-edge), no cards / stats / overlay badges
+ *   - Scroll story sections with edge-to-edge imagery
+ *
+ * Do NOT load this file on traditional subpages.
+ */
+
+/* Landing body: darker atmosphere; header floats over hero */
+body.landing-page {
+  background: var(--color-navy-deep);
+  color: var(--color-white);
+}
+
+body.landing-page .site-header {
+  background: transparent;
+  border-bottom-color: transparent;
+  transition: background var(--transition-base), border-color var(--transition-base),
+    backdrop-filter var(--transition-base);
+}
+
+body.landing-page .site-header.is-scrolled {
+  background: rgba(6, 22, 40, 0.85);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+body.landing-page .logo,
+body.landing-page .nav-primary__list a,
+body.landing-page .nav-utility a,
+body.landing-page .nav-toggle {
+  color: var(--color-white);
+}
+
+body.landing-page .nav-primary__list a:hover,
+body.landing-page .nav-primary__list a[aria-current="page"] {
+  color: var(--color-cyan);
+  border-bottom-color: var(--color-cyan);
+}
+
+body.landing-page .nav-toggle {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+@media (max-width: 800px) {
+  body.landing-page .nav-primary {
+    background: var(--color-navy-deep);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* --- Hero: full-bleed visual plane --------------------------------------- */
+
+.landing-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: calc(var(--header-height) + var(--space-8)) var(--space-5) var(--space-8);
+  overflow: hidden;
+  /* Soft navy wash over photography — atmosphere, not a flat fill */
+  background:
+    linear-gradient(
+      180deg,
+      rgba(6, 22, 40, 0.35) 0%,
+      rgba(6, 22, 40, 0.55) 45%,
+      rgba(6, 22, 40, 0.92) 100%
+    ),
+    url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2400&q=80")
+      center / cover no-repeat;
+}
+
+.landing-hero__content {
+  max-width: 40rem;
+  /* Entrance motion keyed off .is-ready from landing-motion.js */
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition: opacity 900ms ease, transform 900ms ease;
+}
+
+.landing-hero.is-ready .landing-hero__content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Brand as hero-level signal — larger than the headline on purpose */
+.landing-hero__brand {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.03em;
+  margin: 0 0 var(--space-4);
+  color: var(--color-white);
+}
+
+.landing-hero__brand span {
+  color: var(--color-cyan);
+}
+
+.landing-hero h1 {
+  font-size: var(--fs-hero);
+  color: var(--color-white);
+  margin: 0 0 var(--space-4);
+  letter-spacing: -0.03em;
+}
+
+.landing-hero__support {
+  font-size: var(--fs-landing-lead);
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0 0 var(--space-6);
+  max-width: 28rem;
+  line-height: var(--lh-snug);
+}
+
+/* --- Story sections ------------------------------------------------------ */
+
+.landing-section {
+  position: relative;
+  min-height: 85vh;
+  display: grid;
+  align-items: center;
+  padding: var(--space-9) var(--space-5);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.landing-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(6, 22, 40, 0.88) 0%,
+    rgba(6, 22, 40, 0.55) 55%,
+    rgba(6, 22, 40, 0.25) 100%
+  );
+}
+
+.landing-section--rtl::before {
+  background: linear-gradient(
+    270deg,
+    rgba(6, 22, 40, 0.88) 0%,
+    rgba(6, 22, 40, 0.55) 55%,
+    rgba(6, 22, 40, 0.25) 100%
+  );
+}
+
+.landing-section__inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.landing-section__copy {
+  max-width: 28rem;
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+
+.landing-section.is-visible .landing-section__copy {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.landing-section--rtl .landing-section__copy {
+  margin-left: auto;
+}
+
+.landing-section h2 {
+  font-size: var(--fs-landing-h2);
+  color: var(--color-white);
+  margin-bottom: var(--space-4);
+}
+
+.landing-section p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.125rem;
+  margin-bottom: var(--space-5);
+}
+
+.landing-section--coverage {
+  background-image: url("https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=2400&q=80");
+}
+
+.landing-section--speed {
+  background-image: url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2400&q=80");
+}
+
+.landing-section--lifestyle {
+  background-image: url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=2400&q=80");
+}
+
+/* Soft CTA hover presence (landing-only flourish) */
+body.landing-page .btn--primary {
+  transition: background var(--transition-fast), transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+body.landing-page .btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 184, 212, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-hero__content,
+  .landing-section__copy,
+  body.landing-page .btn--primary {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
