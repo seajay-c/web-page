@@ -131,6 +131,11 @@
     flex-direction: column;
     align-items: flex-start;
   }
+
+  /* Primary nav already lists Careers; hide the utility text link on small screens */
+  .nav-utility > a:not(.btn) {
+    display: none;
+  }
 }
 
 /* --- Page shell (traditional) -------------------------------------------- */
