@@ -9,21 +9,21 @@
 (function () {
   "use strict";
 
-  var F = window.Fable;
+  var F = window.Desk;
   if (!F) return;
 
   var SERIES = [
-    { name: "Fable 5", color: "var(--violet)" },
-    { name: "Fable 4", color: "var(--cyan)" },
-    { name: "Prior generation", color: "var(--text-3)" }
+    { name: "Cyprus Communications", color: "var(--violet)" },
+    { name: "Typical provider", color: "var(--cyan)" },
+    { name: "Unmanaged baseline", color: "var(--text-3)" }
   ];
 
   var ROWS = [
-    { label: "Graduate-level reasoning", sub: "multi-step science & math", values: [91, 78, 64] },
-    { label: "Repository-scale coding", sub: "resolve real issues end to end", values: [87, 69, 52] },
-    { label: "Multimodal understanding", sub: "charts, diagrams, photos", values: [84, 71, 58] },
-    { label: "Agentic tool use", sub: "long-horizon, multi-tool tasks", values: [89, 66, 41] },
-    { label: "1M-token recall", sub: "needle retrieval at full context", values: [96, 80, 49] }
+    { label: "First response", sub: "inside the 15-minute commitment", values: [94, 71, 38] },
+    { label: "First-contact resolution", sub: "closed without a second visit", values: [82, 64, 41] },
+    { label: "Uptime", sub: "sites inside the retainer", values: [97, 93, 88] },
+    { label: "Backup success", sub: "nightly jobs that restore", values: [99, 91, 74] },
+    { label: "Permit turnaround", sub: "survey to authority filing", values: [86, 62, 35] }
   ];
 
   document.addEventListener("DOMContentLoaded", function () {
@@ -72,7 +72,7 @@
       if (!showTable) barGroups.forEach(function (g) { g.classList.add("is-in"); });
     });
 
-    F.actions.bench = { label: "Toggle benchmark table view", hint: "benchmarks", run: function () {
+    F.actions.bench = { label: "Toggle service-level table", hint: "proof", run: function () {
       document.getElementById("benchmarks").scrollIntoView({ behavior: "smooth" });
       toggle.click();
     } };

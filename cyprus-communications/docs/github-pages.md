@@ -1,6 +1,6 @@
 # Deploying to GitHub Pages
 
-> **Location note.** This site now lives in the `cyprus-communications/` folder of the repository; the repository root hosts the Fable 5 capability showcase, which embeds this site as a case study. Everything below still applies — the folder is fully self-contained and uses only relative paths — but the site's URL becomes `<pages-url>/cyprus-communications/`.
+> **Location note.** This folder is an earlier fiber-retail demo. It is not linked from the managed-services page at the repository root. The folder stays self-contained, with relative paths, at `<pages-url>/cyprus-communications/`.
 
 This site is static and needs no build command.
 

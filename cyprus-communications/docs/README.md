@@ -2,7 +2,7 @@
 
 Static multi-page showcase for a fictional telecom brand. No build step; open any HTML file or deploy to GitHub Pages.
 
-This site lives under `cyprus-communications/` in the repository. The repository root is the [Fable 5 capability showcase](../../index.html), which features this site as a case study of an end-to-end build.
+This folder is an earlier fiber-retail demo. It is not linked from the Cyprus Communications LLC page at the repository root.
 
 ## Dual design modes
 

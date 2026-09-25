@@ -7,16 +7,16 @@
  *   4. Structured out   — JSON extraction with source-span highlighting
  *   5. Multilingual     — rotating translations (incl. RTL)
  *   6. Long context     — needle-in-a-haystack sweep
- *   7. Speed gauge      — live tokens/s sparkline
+ *   7. Response gauge   — live minutes-to-first-response sparkline
  *
  * Every demo starts when it scrolls into view and exposes a replay hook
- * through `Fable.actions` so the command palette can trigger it.
+ * through `Desk.actions` so the command palette can trigger it.
  */
 
 (function () {
   "use strict";
 
-  var F = window.Fable;
+  var F = window.Desk;
   if (!F) return;
 
   /* ------------------------------------------------------------------ */
@@ -24,89 +24,56 @@
   /* ------------------------------------------------------------------ */
 
   var SAMPLES = {
-    ts: {
-      lang: "ts",
+    ps: {
+      lang: "ps",
       code: [
-        "// Sliding-window limiter keyed by client id.",
-        "// Safe across workers: state lives in Redis, not memory.",
-        'import type { Redis } from "ioredis";',
+        "# Ticket 1842 — restore the Strovolos finance share.",
+        "# Run from the on-call jump host. Do not reboot the firewall.",
+        "param([string]$Site = 'Strovolos')",
         "",
-        "export interface Limit { max: number; windowMs: number }",
+        "$route = Get-VpnRoute -Site $Site -Prefix '10.4.0.0/16'",
+        "if (-not $route) {",
+        "  Add-VpnRoute -Site $Site -Prefix '10.4.0.0/16' -NextHop '10.4.0.1'",
+        "  Write-Output 'split tunnel restored'",
+        "} else {",
+        "  Write-Output 'route already present'",
+        "}",
         "",
-        "export async function allow(",
-        "  redis: Redis,",
-        "  key: string,",
-        "  { max, windowMs }: Limit,",
-        "): Promise<{ ok: boolean; retryAfterMs: number }> {",
-        "  const now = Date.now();",
-        "  const bucket = `rl:${key}`;",
-        "  const [, , count] = await redis",
-        "    .multi()",
-        "    .zremrangebyscore(bucket, 0, now - windowMs)",
-        "    .zadd(bucket, now, `${now}-${Math.random()}`)",
-        "    .zcard(bucket)",
-        "    .pexpire(bucket, windowMs)",
-        "    .exec()",
-        "    .then((rows) => rows!.map(([, value]) => value as number));",
-        "",
-        "  const ok = count <= max;",
-        "  return { ok, retryAfterMs: ok ? 0 : windowMs };",
-        "}"
+        "Test-NetConnection 10.4.12.20 -Port 445 |",
+        "  Select-Object ComputerName, TcpTestSucceeded"
       ].join("\n")
     },
-    py: {
-      lang: "py",
+    macro: {
+      lang: "macro",
       code: [
-        '"""Incremental ETL: only re-process partitions whose bytes changed."""',
-        "from __future__ import annotations",
+        "# Desk macro — new incident from a client email",
+        "ticket.priority = P1",
+        "ticket.queue = on-call",
+        "ticket.site = Strovolos",
+        "ticket.impact = finance share unreachable",
+        "ticket.contact = Eleni Christou",
+        "ticket.phone = +357 99 123 456",
         "",
-        "import hashlib",
-        "from dataclasses import dataclass",
-        "from pathlib import Path",
-        "",
-        "",
-        "@dataclass(frozen=True)",
-        "class Partition:",
-        "    day: str",
-        "    path: Path",
-        "",
-        "    def checksum(self) -> str:",
-        "        h = hashlib.blake2b(digest_size=16)",
-        '        with self.path.open("rb") as f:',
-        '            for chunk in iter(lambda: f.read(1 << 20), b""):',
-        "                h.update(chunk)",
-        "        return h.hexdigest()",
-        "",
-        "",
-        "def plan(parts: list[Partition], state: dict[str, str]) -> list[Partition]:",
-        '    """Return partitions whose data changed since the last successful run."""',
-        "    return [p for p in parts if state.get(p.day) != p.checksum()]"
+        "# Promise on the retainer",
+        "ticket.response_minutes = 15",
+        "notify.client = true",
+        "page.oncall = true"
       ].join("\n")
     },
     sql: {
       lang: "sql",
       code: [
-        "-- Weekly retention cohorts for fiber subscribers",
-        "with first_seen as (",
-        "  select customer_id,",
-        "         date_trunc('week', min(activated_at)) as cohort",
-        "  from subscriptions",
-        "  group by customer_id",
-        "),",
-        "activity as (",
-        "  select s.customer_id, date_trunc('week', u.used_at) as week",
-        "  from usage u",
-        "  join subscriptions s on s.id = u.subscription_id",
-        ")",
+        "-- P1s still inside the 15-minute first-response window",
         "select",
-        "  f.cohort,",
-        "  (a.week - f.cohort) / interval '7 days'            as week_n,",
-        "  count(distinct a.customer_id)::float",
-        "    / count(distinct f.customer_id) over (partition by f.cohort) as retained",
-        "from first_seen f",
-        "join activity a using (customer_id)",
-        "group by 1, 2",
-        "order by 1, 2;"
+        "  t.id,",
+        "  t.site,",
+        "  t.opened_at,",
+        "  extract(epoch from (now() - t.opened_at)) / 60 as age_min",
+        "from tickets t",
+        "where t.priority = 'P1'",
+        "  and t.first_response_at is null",
+        "  and t.opened_at > now() - interval '15 minutes'",
+        "order by t.opened_at;"
       ].join("\n")
     }
   };
@@ -118,8 +85,8 @@
     var replay = document.querySelector("[data-code-replay]");
     if (!pre) return;
 
-    var order = ["ts", "py", "sql"];
-    var current = "ts";
+    var order = ["ps", "macro", "sql"];
+    var current = "ps";
     var run = null;
     var started = false;
 
@@ -139,7 +106,7 @@
       setTab(key);
       var sample = SAMPLES[key];
       pre.innerHTML = "";
-      meta.textContent = "0 tokens";
+      meta.textContent = "0 lines";
 
       F.stream(pre, sample.code, {
         run: mine,
@@ -149,11 +116,11 @@
           pre.scrollTop = pre.scrollHeight;
         },
         onProgress: function (i) {
-          meta.textContent = Math.round(i / 3.6) + " tokens";
+          meta.textContent = sample.code.slice(0, i).split("\n").length + " lines";
         }
       }).then(function () {
         pre.innerHTML = F.highlight(sample.code, sample.lang);
-        meta.textContent = Math.round(sample.code.length / 3.6) + " tokens · done";
+        meta.textContent = sample.code.split("\n").length + " lines · done";
         if (!loop || F.reducedMotion()) return;
         return mine.wait(3600).then(function () {
           var next = order[(order.indexOf(key) + 1) % order.length];
@@ -172,10 +139,10 @@
     F.onVisible(pre, function () {
       if (started) return;
       started = true;
-      play("ts", true);
+      play("ps", true);
     });
 
-    F.actions.code = { label: "Replay code stream", hint: "skills", run: function () {
+    F.actions.code = { label: "Replay help-desk runbook", hint: "support", run: function () {
       document.getElementById("skills").scrollIntoView({ behavior: "smooth" });
       play(current, true);
     } };
@@ -228,7 +195,7 @@
 
     if (replay) replay.addEventListener("click", play);
     F.onVisible(list, play, 0.4);
-    F.actions.trace = { label: "Replay reasoning trace", hint: "skills", run: function () {
+    F.actions.trace = { label: "Replay troubleshooting trace", hint: "support", run: function () {
       list.scrollIntoView({ behavior: "smooth", block: "center" });
       play();
     } };
@@ -244,7 +211,7 @@
     var replay = document.querySelector("[data-vision-replay]");
     if (!frame) return;
     var dets = Array.prototype.slice.call(frame.querySelectorAll(".det"));
-    var text = "A calm harbour at golden hour. A crenellated stone castle anchors the right of the frame above a long pier; two boats ride at anchor in the foreground while gulls cross a low sun. Most likely Kyrenia, on the north coast of Cyprus.";
+    var text = "Commercial frontage on the Strovolos lateral. Pole P12 carries the span, a 4-way conduit runs the sidewalk to cabinet C3, and the permit notes 1.2 m clearance from the face of curb. Business entrance only.";
     var run = null;
 
     function play() {
@@ -287,7 +254,7 @@
 
     if (replay) replay.addEventListener("click", play);
     F.onVisible(frame, play, 0.4);
-    F.actions.vision = { label: "Replay vision analysis", hint: "skills", run: function () {
+    F.actions.vision = { label: "Replay survey markup", hint: "support", run: function () {
       frame.scrollIntoView({ behavior: "smooth", block: "center" });
       play();
     } };
@@ -311,13 +278,12 @@
       '    "company": "Troodos Bakery",',
       '    "phone": "+357 99 123 456"',
       "  },",
-      '  "product": "Business Connect 500",',
-      '  "location": "Platres",',
-      '  "issue": "intermittent_drops",',
-      '  "since": "2026-09-22T08:00:00+03:00",',
-      '  "impact": "blocking card payments",',
-      '  "priority": "P1",',
-      '  "confidence": 0.97',
+      '  "product": "finance VPN",',
+      '  "location": "Strovolos",',
+      '  "issue": "share_unreachable",',
+      '  "since": "2026-09-25T08:10:00+03:00",',
+      '  "impact": "payroll cannot open the share",',
+      '  "priority": "P1"',
       "}"
     ].join("\n");
 
@@ -332,7 +298,7 @@
       var mine = run;
       Object.keys(marks).forEach(function (k) { marks[k].classList.remove("is-hit"); });
       out.innerHTML = "";
-      status.textContent = "extracting";
+      status.textContent = "reading";
       status.className = "tag tag--magenta";
 
       F.stream(out, json, {
@@ -346,7 +312,7 @@
         }
       }).then(function () {
         out.innerHTML = F.highlight(json, "json");
-        status.textContent = "valid · schema ok";
+        status.textContent = "ticket opened";
         status.className = "tag tag--live";
         Object.keys(marks).forEach(function (k) { marks[k].classList.add("is-hit"); });
       }).catch(function () { /* cancelled */ });
@@ -354,7 +320,7 @@
 
     if (replay) replay.addEventListener("click", play);
     F.onVisible(out, play, 0.4);
-    F.actions.json = { label: "Replay JSON extraction", hint: "skills", run: function () {
+    F.actions.json = { label: "Replay ticket capture", hint: "support", run: function () {
       out.scrollIntoView({ behavior: "smooth", block: "center" });
       play();
     } };
@@ -372,15 +338,15 @@
     if (!text) return;
 
     var items = [
-      { code: "EN", name: "English", lang: "en", t: "Your connection is back online. Sorry for the interruption." },
-      { code: "EL", name: "Greek", lang: "el", t: "Η σύνδεσή σας αποκαταστάθηκε. Ζητούμε συγγνώμη για τη διακοπή." },
-      { code: "TR", name: "Turkish", lang: "tr", t: "Bağlantınız yeniden aktif. Kesinti için özür dileriz." },
-      { code: "JA", name: "Japanese", lang: "ja", t: "接続が復旧しました。ご不便をおかけして申し訳ありません。" },
-      { code: "AR", name: "Arabic", lang: "ar", dir: "rtl", t: "عاد اتصالك إلى العمل. نعتذر عن الانقطاع." },
-      { code: "DE", name: "German", lang: "de", t: "Ihre Verbindung ist wieder online. Entschuldigung für die Unterbrechung." },
-      { code: "HI", name: "Hindi", lang: "hi", t: "आपका कनेक्शन फिर से चालू है। असुविधा के लिए खेद है।" },
-      { code: "PT", name: "Portuguese", lang: "pt-BR", t: "Sua conexão voltou a funcionar. Desculpe pela interrupção." },
-      { code: "KO", name: "Korean", lang: "ko", t: "연결이 복구되었습니다. 불편을 드려 죄송합니다." }
+      { code: "EN", name: "English", lang: "en", t: "Access is restored. Your team can sign in again." },
+      { code: "EL", name: "Greek", lang: "el", t: "Η πρόσβαση αποκαταστάθηκε. Η ομάδα σας μπορεί να συνδεθεί ξανά." },
+      { code: "TR", name: "Turkish", lang: "tr", t: "Erişim yeniden açıldı. Ekibiniz tekrar giriş yapabilir." },
+      { code: "JA", name: "Japanese", lang: "ja", t: "アクセスを復旧しました。チームは再度サインインできます。" },
+      { code: "AR", name: "Arabic", lang: "ar", dir: "rtl", t: "تمت استعادة الوصول. يمكن لفريقكم تسجيل الدخول مرة أخرى." },
+      { code: "DE", name: "German", lang: "de", t: "Der Zugriff ist wiederhergestellt. Ihr Team kann sich wieder anmelden." },
+      { code: "HI", name: "Hindi", lang: "hi", t: "पहुँच बहाल हो गई है। आपकी टीम फिर से साइन इन कर सकती है।" },
+      { code: "PT", name: "Portuguese", lang: "pt-BR", t: "O acesso foi restaurado. Sua equipe pode entrar de novo." },
+      { code: "KO", name: "Korean", lang: "ko", t: "접속이 복구되었습니다. 팀이 다시 로그인할 수 있습니다." }
     ];
 
     dots.innerHTML = items.map(function () { return "<i></i>"; }).join("");
@@ -458,10 +424,10 @@
       result.classList.remove("is-shown");
       doc.classList.remove("is-scanning");
       void doc.offsetWidth;
-      label.textContent = "scanning 1,048,576 tokens…";
+      label.textContent = "searching 1,284 articles…";
 
       var target = lines[Math.floor(Math.random() * lines.length)];
-      var page = 40 + Math.floor(Math.random() * 2860);
+      var page = "KB-441 VPN split tunnel";
       var ms = (0.31 + Math.random() * 0.3).toFixed(2);
 
       if (F.reducedMotion()) {
@@ -478,14 +444,14 @@
     }
 
     function finish(page, ms) {
-      label.textContent = "1,048,576 tokens · 2,910 pages";
-      result.innerHTML = "found · <b>page " + page + "</b> · " + ms + " s";
+      label.textContent = "1,284 articles";
+      result.innerHTML = "found · <b>" + page + "</b> · " + ms + " s";
       result.classList.add("is-shown");
     }
 
     if (button) button.addEventListener("click", play);
     F.onVisible(doc, play, 0.4);
-    F.actions.haystack = { label: "Run needle-in-a-haystack search", hint: "skills", run: function () {
+    F.actions.haystack = { label: "Search the knowledge base", hint: "support", run: function () {
       doc.scrollIntoView({ behavior: "smooth", block: "center" });
       play();
     } };
@@ -504,11 +470,11 @@
     var points = [];
     var N = 60;
     var shown = 0;
-    var target = 142;
+    var target = 7.4;
     var timer = null;
     var raf = 0;
 
-    for (var i = 0; i < N; i++) points.push(138 + Math.sin(i / 4) * 5 + (Math.random() - 0.5) * 6);
+    for (var i = 0; i < N; i++) points.push(7 + Math.sin(i / 4) * 1.2 + (Math.random() - 0.5) * 0.8);
 
     function resize() {
       var rect = canvas.getBoundingClientRect();
@@ -522,12 +488,12 @@
       var rect = canvas.getBoundingClientRect();
       var w = rect.width, h = rect.height;
       ctx.clearRect(0, 0, w, h);
-      var min = 110, max = 170;
+      var min = 2, max = 16;
       var pad = 10;
 
       ctx.strokeStyle = "rgba(255,255,255,0.06)";
       ctx.lineWidth = 1;
-      [130, 150].forEach(function (g) {
+      [8, 15].forEach(function (g) {
         var y = h - pad - ((g - min) / (max - min)) * (h - pad * 2);
         ctx.beginPath();
         ctx.moveTo(0, y);
@@ -565,9 +531,9 @@
 
     function tick() {
       var last = points[N - 1];
-      var next = last + (target - last) * 0.25 + (Math.random() - 0.5) * 8;
-      if (Math.random() < 0.08) target = 134 + Math.random() * 16;
-      points.push(Math.max(115, Math.min(165, next)));
+      var next = last + (target - last) * 0.25 + (Math.random() - 0.5) * 1.1;
+      if (Math.random() < 0.08) target = 5.5 + Math.random() * 4;
+      points.push(Math.max(3, Math.min(14, next)));
       points.shift();
       draw();
     }
@@ -575,7 +541,7 @@
     function animateNumber() {
       var goal = points[N - 1];
       shown += (goal - shown) * 0.12;
-      value.textContent = Math.round(shown);
+      value.textContent = shown.toFixed(1);
       raf = requestAnimationFrame(animateNumber);
     }
 
@@ -594,7 +560,7 @@
     window.addEventListener("resize", resize);
 
     if (F.reducedMotion()) {
-      value.textContent = "142";
+      value.textContent = "7.4";
       return;
     }
     if ("IntersectionObserver" in window) {

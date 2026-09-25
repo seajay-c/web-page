@@ -3,16 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Fable 5 capability showcase — an interactive tour of reasoning, code generation, vision, agentic tool use, multilingual fluency, and million-token context. Runs entirely in your browser.">
+  <meta name="description" content="Cyprus Communications LLC — managed IT for businesses, plus 3D telecom design and permitting in the public right-of-way. A fictional demo site.">
   <meta name="theme-color" content="#06070b">
-  <meta property="og:title" content="Fable 5 — Capability showcase">
-  <meta property="og:description" content="Watch a frontier model plan, code, see, and ship. Interactive demos, zero dependencies.">
+  <meta property="og:title" content="Cyprus Communications LLC — Managed IT and right-of-way design">
+  <meta property="og:description" content="Help desk, monitoring, Microsoft 365, backup, and security, with 3D route design and permit packages for business connectivity.">
   <meta property="og:type" content="website">
-  <title>Fable 5 — Capability showcase</title>
+  <title>Cyprus Communications LLC — Managed IT</title>
   <!--
-    Single-page showcase. No build step, no framework, no API keys.
-    Every demo on this page is a scripted, client-side simulation of model
-    output so it can be hosted on GitHub Pages and opened from file://.
+    Static marketing page. No build step, no framework, no API keys.
+    Desk demos are scripted in the browser so the page works on GitHub Pages.
     CSS: tokens → showcase.  JS: showcase → skills → playground → agent → bench.
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/tokens.css">
   <link rel="stylesheet" href="styles/showcase.css">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cff'/%3E%3Cstop offset='.5' stop-color='%234fe8ff'/%3E%3Cstop offset='1' stop-color='%23ff6fb5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Cpath d='M10 8h13v3.4h-9.2v4.5h8v3.4h-8V24H10z' fill='%2306070b'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cff'/%3E%3Cstop offset='.5' stop-color='%234fe8ff'/%3E%3Cstop offset='1' stop-color='%23ff6fb5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Cpath d='M21.5 10.2a7.2 7.2 0 1 0 0 11.6' fill='none' stroke='%2306070b' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -42,13 +41,13 @@
 
   <header class="site-header">
     <div class="container site-header__inner">
-      <a class="brand" href="#top" aria-label="Fable 5 home">
+      <a class="brand" href="#top" aria-label="Cyprus Communications LLC home">
         <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
           <rect width="32" height="32" rx="8" fill="url(#brand-grad)"/>
-          <path d="M10 8h13v3.4h-9.2v4.5h8v3.4h-8V24H10z" fill="#06070b"/>
+          <path d="M21.5 10.2a7.2 7.2 0 1 0 0 11.6" fill="none" stroke="#06070b" stroke-width="3.2" stroke-linecap="round"/>
         </svg>
-        <span>Fable</span>
-        <span class="brand__version">v5.1</span>
+        <span>Cyprus</span>
+        <span class="brand__version">LLC</span>
       </a>
 
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
@@ -57,102 +56,131 @@
 
       <nav class="nav" id="primary-nav" aria-label="Primary">
         <ul class="nav__list">
-          <li><a class="nav__link" href="#skills" data-spy="skills">Skills</a></li>
-          <li><a class="nav__link" href="#playground" data-spy="playground">Playground</a></li>
-          <li><a class="nav__link" href="#agent" data-spy="agent">Agent</a></li>
-          <li><a class="nav__link" href="#benchmarks" data-spy="benchmarks">Benchmarks</a></li>
-          <li><a class="nav__link" href="#case-study" data-spy="case-study">Case study</a></li>
+          <li><a class="nav__link" href="#services" data-spy="services">Services</a></li>
+          <li><a class="nav__link" href="#skills" data-spy="skills">Support</a></li>
+          <li><a class="nav__link" href="#playground" data-spy="playground">Desk</a></li>
+          <li><a class="nav__link" href="#agent" data-spy="agent">Incident</a></li>
+          <li><a class="nav__link" href="#benchmarks" data-spy="benchmarks">Proof</a></li>
         </ul>
         <div class="nav-actions">
           <button class="palette-trigger" type="button" data-palette-open>
             <span>Jump to…</span>
             <span class="kbd">⌘K</span>
           </button>
-          <a class="btn btn--primary btn--sm" href="#playground">Open playground</a>
+          <a class="btn btn--primary btn--sm" href="#consult">Request a consult</a>
         </div>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <!-- ================================================================
-         HERO
-         ================================================================ -->
     <section class="hero" id="top" aria-label="Introduction">
       <canvas class="hero__field" id="hero-field" aria-hidden="true"></canvas>
       <div class="container hero__inner">
         <div class="hero__copy">
           <span class="pill" data-enter style="--i:0">
             <span class="pill__dot"></span>
-            Fable 5 · Interactive capability tour
+            For operators and IT leads
           </span>
           <h1 class="hero__title" data-enter style="--i:1">
-            Built to think.<br>
-            Trained to <em class="serif">ship.</em>
+            IT that answers.<br>
+            Routes that <em class="serif">clear.</em>
           </h1>
           <p class="hero__lead" data-enter style="--i:2">
-            Reasoning, code, vision, and autonomous tool use in one model. This page is a live tour of those skills, and every demo on it runs right here in your browser.
+            Retained managed IT with a 15-minute first response. When a business needs connectivity built, we design the route in 3D and carry the right-of-way permit.
           </p>
           <div class="hero__actions" data-enter style="--i:3">
-            <a class="btn btn--primary" href="#playground">
-              Try the playground
+            <a class="btn btn--primary" href="#consult">
+              Request a consult
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
             </a>
-            <a class="btn btn--ghost" href="#agent">Watch an agent run</a>
+            <a class="btn btn--ghost" href="#skills">See how support runs</a>
           </div>
           <p class="ticker" data-enter style="--i:4" aria-live="polite">
-            <span class="ticker__label">now</span>
+            <span class="ticker__label">desk</span>
             <span class="ticker__text" id="ticker-text"></span><span class="caret" aria-hidden="true"></span>
           </p>
         </div>
 
         <dl class="hero__stats" data-enter style="--i:5">
           <div class="stat">
-            <dt class="stat__label">context window</dt>
-            <dd class="stat__value"><span data-count="1" data-decimals="0">0</span><small>M tokens</small></dd>
+            <dt class="stat__label">first response</dt>
+            <dd class="stat__value"><span data-count="15">0</span><small>min</small></dd>
           </div>
           <div class="stat">
-            <dt class="stat__label">output speed</dt>
-            <dd class="stat__value"><span data-count="142">0</span><small>tok / s</small></dd>
+            <dt class="stat__label">on call</dt>
+            <dd class="stat__value"><span data-count="24">0</span><small>/ 7</small></dd>
           </div>
           <div class="stat">
-            <dt class="stat__label">languages</dt>
-            <dd class="stat__value"><span data-count="40">0</span><small>+</small></dd>
+            <dt class="stat__label">desk languages</dt>
+            <dd class="stat__value"><span data-count="9">0</span></dd>
           </div>
           <div class="stat">
-            <dt class="stat__label">modalities</dt>
-            <dd class="stat__value stat__value--text">Text · Image · Code</dd>
+            <dt class="stat__label">also</dt>
+            <dd class="stat__value stat__value--text">3D design · permits · ROW</dd>
           </div>
         </dl>
       </div>
     </section>
 
-    <!-- ================================================================
-         SKILLS — bento grid of live micro-demos
-         ================================================================ -->
+    <section class="section" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section__head">
+          <div class="reveal">
+            <p class="section__index">01 — Services</p>
+            <h2 class="section__title" id="services-title">Two offers. <span class="serif gradient-text">Both for businesses.</span></h2>
+          </div>
+          <p class="section__lead reveal" style="--i:1">A retained desk for the systems you already run, and a design practice for the route that gets a business connected. Not a home internet shop.</p>
+        </div>
+        <div class="offers">
+          <article class="offer reveal">
+            <span class="tag tag--cyan">Managed IT</span>
+            <h3>A desk with your name on the contract</h3>
+            <p>Help desk, monitoring, endpoints, Microsoft 365, backup, and security. Sold as a retainer, with a named 15-minute commitment to first response.</p>
+            <ul>
+              <li>One queue for incidents and requests</li>
+              <li>Monitoring that pages a person, not a mailbox</li>
+              <li>Backup checks you can ask about by name</li>
+            </ul>
+            <a class="btn btn--primary btn--sm" href="#skills">How the desk works</a>
+          </article>
+          <article class="offer reveal" style="--i:1">
+            <span class="tag tag--magenta">Right-of-way</span>
+            <h3>3D design and the permit to build it</h3>
+            <p>Route and structure design in the public right-of-way, a permit package, and coordination with the roadway authority so a business lateral can actually be built.</p>
+            <ul>
+              <li>Pole, conduit, cabinet, and clearance called out</li>
+              <li>Permit status you can see, not chase</li>
+              <li>Built for commercial sites, not residential plans</li>
+            </ul>
+            <a class="btn btn--sm" href="#row">See a permit set</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="skills" aria-labelledby="skills-title">
       <div class="container">
         <div class="section__head">
           <div class="reveal">
-            <p class="section__index">01 — Capabilities</p>
-            <h2 class="section__title" id="skills-title">Seven skills. <span class="serif gradient-text">All of them live.</span></h2>
+            <p class="section__index">02 — How support runs</p>
+            <h2 class="section__title" id="skills-title">The desk, <span class="serif gradient-text">in the open.</span></h2>
           </div>
-          <p class="section__lead reveal" style="--i:1">Each card is a self-contained demo. Hover, click, or just watch — they loop on their own and replay on demand.</p>
+          <p class="section__lead reveal" style="--i:1">These panels replay real kinds of help-desk work: a runbook, a troubleshooting trace, a survey markup, a ticket taken from email, a status in the client’s language, a search of the knowledge base, and time to first response. They loop on their own.</p>
         </div>
 
         <div class="bento">
-          <!-- Code generation -->
           <article class="card reveal" style="--span: 7; --i:0" data-spotlight>
             <div class="card__head">
               <div>
                 <div class="card__kicker">
                   <span class="card__icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4 1.5 8 5 12M11 4l3.5 4L11 12M9.5 2.5l-3 11"/></svg></span>
-                  <span class="tag tag--live">streaming</span>
+                  <span class="tag tag--live">runbook</span>
                 </div>
-                <h3>Writes code you'd actually merge</h3>
-                <p class="card__desc">Idiomatic, typed, and commented where it matters. Watch a live stream across three languages.</p>
+                <h3>The steps, written down</h3>
+                <p class="card__desc">A VPN restore, a ticket macro, and the queue query the desk actually runs.</p>
               </div>
-              <button class="icon-btn" type="button" data-code-replay aria-label="Replay code stream">
+              <button class="icon-btn" type="button" data-code-replay aria-label="Replay runbook">
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8a5.5 5.5 0 1 0 1.6-3.9M2.5 2.5v3h3"/></svg>
               </button>
             </div>
@@ -160,124 +188,96 @@
               <div class="code-panel">
                 <div class="code-panel__bar">
                   <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-                  <div class="tabs" role="tablist" aria-label="Language">
-                    <button class="tab is-active" role="tab" aria-selected="true" data-code-tab="ts">rate-limit.ts</button>
-                    <button class="tab" role="tab" aria-selected="false" data-code-tab="py">pipeline.py</button>
-                    <button class="tab" role="tab" aria-selected="false" data-code-tab="sql">cohorts.sql</button>
+                  <div class="tabs" role="tablist" aria-label="Runbook">
+                    <button class="tab is-active" role="tab" aria-selected="true" data-code-tab="ps">restore-vpn.ps1</button>
+                    <button class="tab" role="tab" aria-selected="false" data-code-tab="macro">new-ticket.macro</button>
+                    <button class="tab" role="tab" aria-selected="false" data-code-tab="sql">open-p1.sql</button>
                   </div>
-                  <span class="code-panel__meta" id="code-meta">0 tokens</span>
+                  <span class="code-panel__meta" id="code-meta">0 lines</span>
                 </div>
                 <pre class="code" id="code-stream" aria-live="off"></pre>
               </div>
             </div>
           </article>
 
-          <!-- Reasoning -->
           <article class="card reveal" style="--span: 5; --i:1" data-spotlight>
             <div class="card__head">
               <div>
                 <div class="card__kicker">
                   <span class="card__icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2a4 4 0 0 0-2.5 7.1V11h5V9.1A4 4 0 0 0 8 2ZM6.5 13h3"/></svg></span>
-                  <span class="tag tag--violet">extended thinking</span>
+                  <span class="tag tag--violet">incident</span>
                 </div>
-                <h3>Shows its work</h3>
-                <p class="card__desc">Multi-step reasoning with a visible, verifiable trace.</p>
+                <h3>Shows the trace</h3>
+                <p class="card__desc">One outage, checked in order, with the answer at the end.</p>
               </div>
-              <button class="icon-btn" type="button" data-trace-replay aria-label="Replay reasoning trace">
+              <button class="icon-btn" type="button" data-trace-replay aria-label="Replay troubleshooting trace">
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8a5.5 5.5 0 1 0 1.6-3.9M2.5 2.5v3h3"/></svg>
               </button>
             </div>
             <div class="card__body">
-              <p class="puzzle"><strong>Puzzle.</strong> Three ferries leave Limassol at 06:00. They return every 36, 48, and 60 minutes. When are all three next in port together?</p>
+              <p class="puzzle"><strong>Ticket 1842.</strong> Strovolos office: VPN up, but the finance share has been unreachable since 08:10. Mail and the internet still work.</p>
               <ol class="trace" id="trace">
-                <li class="trace__step"><span class="trace__num">1</span><span>Reframe: the answer is the least common multiple of 36, 48, and 60 minutes after 06:00.</span></li>
-                <li class="trace__step"><span class="trace__num">2</span><span>Factor: 36 = 2²·3², 48 = 2⁴·3, 60 = 2²·3·5.</span></li>
-                <li class="trace__step"><span class="trace__num">3</span><span>Take the highest power of each prime: 2⁴ · 3² · 5 = 720.</span></li>
-                <li class="trace__step"><span class="trace__num">4</span><span>720 minutes is exactly 12 hours. Sanity check: 720 ÷ 36 = 20, ÷ 48 = 15, ÷ 60 = 12 — all whole.</span></li>
+                <li class="trace__step"><span class="trace__num">1</span><span>Scope: one site, one share. Mail works, so this is not the circuit and not Microsoft 365.</span></li>
+                <li class="trace__step"><span class="trace__num">2</span><span>The 08:00 change window touched the firewall. Split tunnel for 10.4.0.0/16 was dropped.</span></li>
+                <li class="trace__step"><span class="trace__num">3</span><span>File server 10.4.12.20 answers on the LAN. It does not answer through the tunnel.</span></li>
+                <li class="trace__step"><span class="trace__num">4</span><span>Put the route back, then confirm a finance laptop opens the share without a full reconnect.</span></li>
               </ol>
-              <p class="trace__answer" id="trace-answer">All three are in port together at 18:00.</p>
+              <p class="trace__answer" id="trace-answer">Cause: split-tunnel route removed at 08:00. Restoring it brings the share back.</p>
             </div>
           </article>
 
-          <!-- Vision -->
           <article class="card reveal" style="--span: 5; --i:2" data-spotlight>
             <div class="card__head">
               <div>
                 <div class="card__kicker">
                   <span class="card__icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 8s2.5-4.5 6.5-4.5S14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8Z"/><circle cx="8" cy="8" r="2"/></svg></span>
-                  <span class="tag tag--cyan">vision</span>
+                  <span class="tag tag--cyan">survey</span>
                 </div>
-                <h3>Sees the details</h3>
-                <p class="card__desc">Grounded detection plus a natural-language description.</p>
+                <h3>Markup a designer would make</h3>
+                <p class="card__desc">Pole, conduit, cabinet, and the clearance the permit has to show.</p>
               </div>
-              <button class="icon-btn" type="button" data-vision-replay aria-label="Replay vision analysis">
+              <button class="icon-btn" type="button" data-vision-replay aria-label="Replay survey markup">
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8a5.5 5.5 0 1 0 1.6-3.9M2.5 2.5v3h3"/></svg>
               </button>
             </div>
             <div class="card__body">
               <div class="vision">
                 <div class="vision__frame" id="vision-frame">
-                  <svg class="vision__scene" viewBox="0 0 320 200" role="img" aria-label="Stylised illustration of Kyrenia harbour at golden hour">
-                    <defs>
-                      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0" stop-color="#1b1f4b"/>
-                        <stop offset="0.55" stop-color="#7a4a7e"/>
-                        <stop offset="1" stop-color="#ffb17a"/>
-                      </linearGradient>
-                      <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0" stop-color="#c97a6a"/>
-                        <stop offset="0.3" stop-color="#3a4d7a"/>
-                        <stop offset="1" stop-color="#101a36"/>
-                      </linearGradient>
-                    </defs>
-                    <rect width="320" height="200" fill="url(#sky)"/>
-                    <circle cx="252" cy="42" r="14" fill="#ffd9a0"/>
-                    <circle cx="252" cy="42" r="22" fill="#ffd9a0" opacity="0.18"/>
-                    <path d="M0 120 L40 96 L78 108 L120 84 L165 104 L200 92 L230 100 L260 90 L320 104 L320 122 Z" fill="#2a2450" opacity="0.9"/>
-                    <rect y="120" width="320" height="80" fill="url(#sea)"/>
-                    <!-- castle -->
-                    <rect x="204" y="86" width="90" height="42" fill="#5b4a3f"/>
-                    <rect x="204" y="80" width="90" height="8" fill="#6b5a4d"/>
-                    <path d="M204 80h8v-8h8v8h8v-8h8v8h8v-8h8v8h8v-8h8v8h8v-8h8v8h10" fill="#6b5a4d"/>
-                    <rect x="236" y="70" width="22" height="18" fill="#6b5a4d"/>
-                    <rect x="242" y="98" width="8" height="14" fill="#2a1e18"/>
-                    <rect x="266" y="98" width="8" height="14" fill="#2a1e18"/>
-                    <!-- pier -->
-                    <rect x="180" y="128" width="140" height="6" fill="#3a2f2a"/>
-                    <!-- boats -->
-                    <path d="M34 148 L96 148 L88 162 L42 162 Z" fill="#e8e3d6"/>
-                    <path d="M40 156 h50" stroke="#b34d3f" stroke-width="3"/>
-                    <path d="M64 148 V112" stroke="#e8e3d6" stroke-width="2"/>
-                    <path d="M116 158 L164 158 L158 168 L122 168 Z" fill="#dfe6ee"/>
-                    <path d="M140 158 V128" stroke="#dfe6ee" stroke-width="1.6"/>
-                    <path d="M140 130 L156 152 H140 Z" fill="#ffd9a0" opacity="0.85"/>
-                    <path d="M54 176 L86 176 L82 184 L58 184 Z" fill="#c8d0dc"/>
-                    <!-- reflections -->
-                    <path d="M40 166 h50 M46 170 h38 M120 172 h40 M126 176 h28" stroke="#ffffff" stroke-opacity="0.18" stroke-width="1.5"/>
-                    <!-- gulls -->
-                    <path d="M82 46 q4 -4 8 0 q4 -4 8 0" stroke="#fff" stroke-width="1.4" fill="none" opacity="0.8"/>
-                    <path d="M104 58 q3 -3 6 0 q3 -3 6 0" stroke="#fff" stroke-width="1.2" fill="none" opacity="0.7"/>
-
-                    <!-- detections (revealed by skills.js) -->
+                  <svg class="vision__scene" viewBox="0 0 320 200" role="img" aria-label="Plan view of a commercial street right-of-way with pole, conduit, and cabinet">
+                    <rect width="320" height="200" fill="#12151f"/>
+                    <rect x="0" y="78" width="320" height="52" fill="#1c2433"/>
+                    <g stroke="#3a455c" stroke-width="1" stroke-dasharray="6 6">
+                      <path d="M0 104 H320"/>
+                    </g>
+                    <rect x="0" y="62" width="320" height="16" fill="#2a241c"/>
+                    <rect x="0" y="130" width="320" height="16" fill="#2a241c"/>
+                    <rect x="188" y="146" width="90" height="40" fill="#1a2744" stroke="#4fe8ff" stroke-opacity="0.35"/>
+                    <text x="198" y="170" fill="#9fb4d0" font-family="ui-monospace,monospace" font-size="8">SITE · ACROPOLIS LTD</text>
+                    <line x1="40" y1="40" x2="40" y2="150" stroke="#c9b8a0" stroke-width="3"/>
+                    <line x1="28" y1="48" x2="52" y2="48" stroke="#c9b8a0" stroke-width="2"/>
+                    <line x1="32" y1="56" x2="48" y2="56" stroke="#c9b8a0" stroke-width="2"/>
+                    <path d="M40 150 H250" fill="none" stroke="#ff6fb5" stroke-width="2" stroke-dasharray="4 3"/>
+                    <rect x="236" y="96" width="28" height="22" rx="2" fill="#3a3348" stroke="#d7d2e6"/>
+                    <text x="239" y="110" fill="#d7d2e6" font-family="ui-monospace,monospace" font-size="6">CAB</text>
+                    <line x1="52" y1="150" x2="52" y2="168" stroke="#ffc46b" stroke-width="1"/>
+                    <line x1="236" y1="150" x2="236" y2="168" stroke="#ffc46b" stroke-width="1"/>
+                    <line x1="52" y1="164" x2="236" y2="164" stroke="#ffc46b" stroke-width="1"/>
+                    <text x="110" y="176" fill="#ffc46b" font-family="ui-monospace,monospace" font-size="7">CLEAR 1.2 m</text>
                     <g class="det" data-det="1">
-                      <rect class="det__box" x="200" y="66" width="98" height="66"/>
-                      <g class="det__label" transform="translate(200 56)"><rect width="78" height="10" rx="2"/><text x="3" y="7.4">castle · 0.98</text></g>
+                      <rect class="det__box" x="24" y="32" width="32" height="124"/>
+                      <g class="det__label" transform="translate(60 36)"><rect width="62" height="10" rx="2"/><text x="3" y="7.4">pole · P12</text></g>
                     </g>
                     <g class="det" data-det="2">
-                      <rect class="det__box" x="28" y="108" width="74" height="58"/>
-                      <g class="det__label" transform="translate(28 98)"><rect width="88" height="10" rx="2"/><text x="3" y="7.4">fishing boat · 0.96</text></g>
+                      <rect class="det__box" x="36" y="142" width="220" height="16"/>
+                      <g class="det__label" transform="translate(88 22)"><rect width="78" height="10" rx="2"/><text x="3" y="7.4">conduit · 4-way</text></g>
                     </g>
                     <g class="det" data-det="3">
-                      <rect class="det__box" x="112" y="124" width="58" height="48"/>
-                      <g class="det__label" transform="translate(112 114)"><rect width="72" height="10" rx="2"/><text x="3" y="7.4">sailboat · 0.93</text></g>
+                      <rect class="det__box" x="228" y="88" width="44" height="38"/>
+                      <g class="det__label" transform="translate(228 76)"><rect width="72" height="10" rx="2"/><text x="3" y="7.4">cabinet · C3</text></g>
                     </g>
                     <g class="det" data-det="4">
-                      <rect class="det__box" x="78" y="40" width="46" height="24"/>
-                      <g class="det__label" transform="translate(78 30)"><rect width="66" height="10" rx="2"/><text x="3" y="7.4">gulls ×2 · 0.88</text></g>
-                    </g>
-                    <g class="det" data-det="5">
-                      <rect class="det__box" x="234" y="24" width="36" height="36"/>
-                      <g class="det__label" transform="translate(234 14)"><rect width="58" height="10" rx="2"/><text x="3" y="7.4">sun · low</text></g>
+                      <rect class="det__box" x="48" y="154" width="192" height="26"/>
+                      <g class="det__label" transform="translate(150 186)"><rect width="78" height="10" rx="2"/><text x="3" y="7.4">clearance 1.2m</text></g>
                     </g>
                   </svg>
                   <div class="vision__scan" aria-hidden="true"></div>
@@ -287,51 +287,49 @@
             </div>
           </article>
 
-          <!-- Structured output -->
           <article class="card reveal" style="--span: 7; --i:3" data-spotlight>
             <div class="card__head">
               <div>
                 <div class="card__kicker">
                   <span class="card__icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 2C4 2 4 3 4 4v2c0 1-1 2-2 2 1 0 2 1 2 2v2c0 1 0 2 1.5 2M10.5 2c1.5 0 1.5 1 1.5 2v2c0 1 1 2 2 2-1 0-2 1-2 2v2c0 1 0 2-1.5 2"/></svg></span>
-                  <span class="tag tag--magenta">structured output</span>
+                  <span class="tag tag--magenta">ticket</span>
                 </div>
-                <h3>Turns prose into data</h3>
-                <p class="card__desc">Schema-faithful JSON from messy human text, with every field traceable to its source span.</p>
+                <h3>Email in, ticket out</h3>
+                <p class="card__desc">The desk lifts the fields that matter and leaves a trail back to the sentence they came from.</p>
               </div>
-              <button class="icon-btn" type="button" data-json-replay aria-label="Replay extraction">
+              <button class="icon-btn" type="button" data-json-replay aria-label="Replay ticket capture">
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8a5.5 5.5 0 1 0 1.6-3.9M2.5 2.5v3h3"/></svg>
               </button>
             </div>
             <div class="card__body">
               <div class="split-io">
                 <div class="io">
-                  <div class="io__bar"><span>input · support email</span></div>
+                  <div class="io__bar"><span>inbound · client email</span></div>
                   <div class="io__body" id="json-source">
-                    Hi — this is <mark data-f="name">Eleni Christou</mark> from <mark data-f="company">Troodos Bakery</mark>. Our <mark data-f="product">Business Connect 500</mark> line at the <mark data-f="location">Platres</mark> branch has been dropping since <mark data-f="since">Tuesday morning</mark>. It's <mark data-f="severity">blocking card payments</mark>, so this is urgent. Best number is <mark data-f="phone">+357 99 123 456</mark>.
+                    Hi — this is <mark data-f="name">Eleni Christou</mark> at <mark data-f="company">Troodos Bakery</mark>. The <mark data-f="product">finance VPN</mark> at <mark data-f="location">Strovolos</mark> has been down since <mark data-f="since">08:10</mark>. Payroll <mark data-f="severity">cannot open the share</mark>. Call <mark data-f="phone">+357 99 123 456</mark>.
                   </div>
                 </div>
                 <div class="io">
-                  <div class="io__bar"><span>output · ticket.json</span><span class="tag" id="json-status">idle</span></div>
+                  <div class="io__bar"><span>desk · ticket.json</span><span class="tag" id="json-status">idle</span></div>
                   <div class="io__body"><pre id="json-out"></pre></div>
                 </div>
               </div>
             </div>
           </article>
 
-          <!-- Multilingual -->
           <article class="card reveal" style="--span: 4; --i:4" data-spotlight>
             <div class="card__head">
               <div>
                 <div class="card__kicker">
                   <span class="card__icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M2 8h12M8 2c2 2 2 10 0 12M8 2c-2 2-2 10 0 12"/></svg></span>
-                  <span class="tag">multilingual</span>
+                  <span class="tag">status line</span>
                 </div>
-                <h3>Fluent in 40+ languages</h3>
+                <h3>The same update, in their language</h3>
               </div>
             </div>
             <div class="card__body">
               <div class="lang">
-                <p class="lang__text" id="lang-text" lang="en">Your connection is back online. Sorry for the interruption.</p>
+                <p class="lang__text" id="lang-text" lang="en">Access is restored. Your team can sign in again.</p>
                 <div class="lang__meta">
                   <span class="lang__code" id="lang-code">EN</span>
                   <span id="lang-name">English</span>
@@ -341,17 +339,16 @@
             </div>
           </article>
 
-          <!-- Long context -->
           <article class="card reveal" style="--span: 4; --i:5" data-spotlight>
             <div class="card__head">
               <div>
                 <div class="card__kicker">
                   <span class="card__icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h10v10H3zM3 6.5h10M3 10h10M6.5 3v10"/></svg></span>
-                  <span class="tag">1M context</span>
+                  <span class="tag">knowledge base</span>
                 </div>
-                <h3>Needle in a million tokens</h3>
+                <h3>The one article that applies</h3>
               </div>
-              <button class="icon-btn" type="button" data-haystack-run aria-label="Run needle search">
+              <button class="icon-btn" type="button" data-haystack-run aria-label="Search the knowledge base">
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg>
               </button>
             </div>
@@ -361,29 +358,28 @@
                   <div class="haystack__beam" aria-hidden="true"></div>
                 </div>
                 <div class="haystack__foot">
-                  <span id="haystack-label">1,048,576 tokens · 2,910 pages</span>
+                  <span id="haystack-label">1,284 articles</span>
                   <span class="haystack__result" id="haystack-result"></span>
                 </div>
               </div>
             </div>
           </article>
 
-          <!-- Speed -->
           <article class="card reveal" style="--span: 4; --i:6" data-spotlight>
             <div class="card__head">
               <div>
                 <div class="card__kicker">
                   <span class="card__icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 1.5 3.5 9H8l-1 5.5L12.5 7H8z"/></svg></span>
-                  <span class="tag tag--live">realtime</span>
+                  <span class="tag tag--live">live</span>
                 </div>
-                <h3>Fast enough to feel instant</h3>
+                <h3>Time to first response</h3>
               </div>
             </div>
             <div class="card__body">
               <div class="gauge">
-                <p class="gauge__value"><span id="gauge-value">0</span><small>tok / s</small></p>
+                <p class="gauge__value"><span id="gauge-value">0</span><small>min</small></p>
                 <canvas class="gauge__spark" id="gauge-spark" aria-hidden="true"></canvas>
-                <div class="gauge__legend"><span>last 60 s</span><span>p50 · 138 &nbsp; p95 · 151</span></div>
+                <div class="gauge__legend"><span>last 60 min</span><span>commitment · 15</span></div>
               </div>
             </div>
           </article>
@@ -391,44 +387,41 @@
       </div>
     </section>
 
-    <!-- ================================================================
-         PLAYGROUND — prompt → live UI
-         ================================================================ -->
     <section class="section" id="playground" aria-labelledby="playground-title">
       <div class="container">
         <div class="section__head">
           <div class="reveal">
-            <p class="section__index">02 — Playground</p>
-            <h2 class="section__title" id="playground-title">Describe it. <span class="serif gradient-text">Watch it get built.</span></h2>
+            <p class="section__index">03 — Desk tools</p>
+            <h2 class="section__title" id="playground-title">Ask the desk. <span class="serif gradient-text">Watch it answer.</span></h2>
           </div>
-          <p class="section__lead reveal" style="--i:1">Ask for a component and the model streams its reasoning, writes the code, and mounts a working preview. Pick a prompt or type your own.</p>
+          <p class="section__lead reveal" style="--i:1">Pick a request the way a client would. The reply is scripted for this demo: a short note, then a working tool on the right. Try the plan, the portal, the queue, the chart, or a permit.</p>
         </div>
 
         <div class="playground reveal">
           <div class="chat">
             <div class="panel__bar">
               <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-              <span>conversation</span>
-              <span class="tag tag--live">offline demo</span>
+              <span>help desk</span>
+              <span class="tag tag--live">scripted demo</span>
             </div>
             <div class="chat__log" id="chat-log" role="log" aria-live="polite" aria-relevant="additions">
               <div class="msg msg--ai">
-                <span class="msg__avatar" aria-hidden="true">F5</span>
+                <span class="msg__avatar" aria-hidden="true">CC</span>
                 <div class="msg__body">
-                  <p>Hi. Tell me what you'd like built and I'll assemble it on the stage — with the markup on the Code tab. Try one of the prompts below to start.</p>
+                  <p>Desk is open. Ask for a plan, a portal sign-in, the ticket board, the monthly chart, or a right-of-way permit. I’ll put the working tool on the stage.</p>
                 </div>
               </div>
             </div>
-            <div class="chips" id="chips" aria-label="Suggested prompts">
-              <button class="chip" type="button" data-prompt="Design a pricing card for a 1 Gbps fiber plan with a monthly/yearly toggle">Pricing card</button>
-              <button class="chip" type="button" data-prompt="Make a weather widget for Nicosia with a 5-day forecast">Weather widget</button>
-              <button class="chip" type="button" data-prompt="Build a signup form with live validation and a password strength meter">Signup form</button>
-              <button class="chip" type="button" data-prompt="Create a kanban board with drag and drop">Kanban board</button>
-              <button class="chip" type="button" data-prompt="Chart monthly revenue for the last 12 months as a sparkline">Revenue chart</button>
+            <div class="chips" id="chips" aria-label="Suggested requests">
+              <button class="chip" type="button" data-prompt="Show the managed IT plan with a monthly and yearly toggle">Managed plan</button>
+              <button class="chip" type="button" data-prompt="Open the client portal sign-in with password checks">Portal sign-in</button>
+              <button class="chip" type="button" data-prompt="Show the incident board with drag and drop">Ticket board</button>
+              <button class="chip" type="button" data-prompt="Chart tickets closed over the last 12 months">Ticket chart</button>
+              <button class="chip" type="button" data-prompt="Show the right-of-way permit status for the Acropolis lateral">Permit status</button>
             </div>
             <form class="chat__form" id="chat-form" autocomplete="off">
-              <label class="visually-hidden" for="chat-input">Describe a component</label>
-              <input class="chat__input" id="chat-input" type="text" placeholder="e.g. a kanban board with drag and drop" maxlength="160">
+              <label class="visually-hidden" for="chat-input">Ask the desk</label>
+              <input class="chat__input" id="chat-input" type="text" placeholder="e.g. show the permit status" maxlength="160">
               <button class="chat__send" type="submit" id="chat-send" aria-label="Send">
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V3M4 7l4-4 4 4"/></svg>
               </button>
@@ -439,9 +432,9 @@
             <div class="panel__bar">
               <div class="seg" role="tablist" aria-label="Stage view">
                 <button class="seg__btn" role="tab" aria-selected="true" data-stage-tab="preview" id="tab-preview" aria-controls="pane-preview">Preview</button>
-                <button class="seg__btn" role="tab" aria-selected="false" data-stage-tab="code" id="tab-code" aria-controls="pane-code">Code</button>
+                <button class="seg__btn" role="tab" aria-selected="false" data-stage-tab="code" id="tab-code" aria-controls="pane-code">Notes</button>
               </div>
-              <span id="stage-meta">nothing mounted</span>
+              <span id="stage-meta">nothing on the desk</span>
               <span class="tag" id="stage-status">idle</span>
             </div>
             <div class="stage__viewport">
@@ -449,7 +442,7 @@
                 <div class="pg-preview" id="pg-preview">
                   <div class="pg-empty">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M8 4v5"/></svg>
-                    <span>Your component will mount here. Preview stays interactive: toggles, drag and drop, validation — all wired.</span>
+                    <span>The tool lands here. Toggles, the sign-in form, and the ticket board all work.</span>
                   </div>
                 </div>
               </div>
@@ -462,26 +455,23 @@
       </div>
     </section>
 
-    <!-- ================================================================
-         AGENT — end-to-end run
-         ================================================================ -->
     <section class="section" id="agent" aria-labelledby="agent-title">
       <div class="container">
         <div class="section__head">
           <div class="reveal">
-            <p class="section__index">03 — Agentic</p>
-            <h2 class="section__title" id="agent-title">From issue to pull request, <span class="serif gradient-text">unattended.</span></h2>
+            <p class="section__index">04 — One incident</p>
+            <h2 class="section__title" id="agent-title">From alert to client update, <span class="serif gradient-text">on the record.</span></h2>
           </div>
-          <p class="section__lead reveal" style="--i:1">A replay of the model working a real ticket against the case-study repo: it plans, explores, edits, runs tests, and ships — narrating each tool call.</p>
+          <p class="section__lead reveal" style="--i:1">A replay of ticket 1842. The engineer diagnoses the VPN, changes the firewall route, watches one check fail and then pass, and sends the client a plain update.</p>
         </div>
 
         <div class="agent reveal">
-          <ol class="agent__steps" id="agent-steps" aria-label="Run progress">
-            <li class="step" data-step="plan"><span class="step__dot"><span>1</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg></span><span><span class="step__title">Plan</span><span class="step__sub">Break the ticket down</span></span></li>
-            <li class="step" data-step="explore"><span class="step__dot"><span>2</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg></span><span><span class="step__title">Explore</span><span class="step__sub">Search &amp; read the code</span></span></li>
-            <li class="step" data-step="edit"><span class="step__dot"><span>3</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg></span><span><span class="step__title">Edit</span><span class="step__sub">Apply a minimal diff</span></span></li>
-            <li class="step" data-step="test"><span class="step__dot"><span>4</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg></span><span><span class="step__title">Test</span><span class="step__sub">Prove it, then re-run</span></span></li>
-            <li class="step" data-step="ship"><span class="step__dot"><span>5</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg></span><span><span class="step__title">Ship</span><span class="step__sub">Commit &amp; open the PR</span></span></li>
+          <ol class="agent__steps" id="agent-steps" aria-label="Incident progress">
+            <li class="step" data-step="plan"><span class="step__dot"><span>1</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg></span><span><span class="step__title">Alert</span><span class="step__sub">Read the page</span></span></li>
+            <li class="step" data-step="explore"><span class="step__dot"><span>2</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg></span><span><span class="step__title">Diagnose</span><span class="step__sub">Find the broken route</span></span></li>
+            <li class="step" data-step="edit"><span class="step__dot"><span>3</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg></span><span><span class="step__title">Change</span><span class="step__sub">Restore the tunnel</span></span></li>
+            <li class="step" data-step="test"><span class="step__dot"><span>4</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg></span><span><span class="step__title">Verify</span><span class="step__sub">Fail once, then pass</span></span></li>
+            <li class="step" data-step="ship"><span class="step__dot"><span>5</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg></span><span><span class="step__title">Update</span><span class="step__sub">Tell the client</span></span></li>
             <li class="agent__controls" role="presentation">
               <button class="btn btn--sm" type="button" id="agent-toggle">Play</button>
               <button class="btn btn--sm btn--ghost" type="button" id="agent-restart">Restart</button>
@@ -493,36 +483,33 @@
           <div class="terminal">
             <div class="panel__bar">
               <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-              <span>fable — agent session</span>
-              <span class="tag" id="agent-tools">0 tool calls</span>
+              <span>on-call · ticket 1842</span>
+              <span class="tag" id="agent-tools">0 checks</span>
             </div>
             <div class="terminal__body" id="terminal" aria-live="off"></div>
           </div>
 
           <div class="diff">
             <div class="panel__bar">
-              <span class="diff__file" id="diff-file">working tree</span>
+              <span class="diff__file" id="diff-file">no change yet</span>
               <span class="diff__stats" id="diff-stats"></span>
             </div>
             <div class="diff__body" id="diff">
-              <p class="diff__empty">No changes yet. The diff fills in as the agent edits.</p>
+              <p class="diff__empty">No change yet. The firewall diff fills in when the route is restored.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ================================================================
-         BENCHMARKS
-         ================================================================ -->
     <section class="section" id="benchmarks" aria-labelledby="bench-title">
       <div class="container">
         <div class="section__head">
           <div class="reveal">
-            <p class="section__index">04 — Measured</p>
-            <h2 class="section__title" id="bench-title">Generation over generation, <span class="serif gradient-text">every axis moved.</span></h2>
+            <p class="section__index">05 — Proof</p>
+            <h2 class="section__title" id="bench-title">What a retainer <span class="serif gradient-text">is for.</span></h2>
           </div>
-          <p class="section__lead reveal" style="--i:1">Relative capability across five task families. Bars animate in from zero so the deltas are easy to read.</p>
+          <p class="section__lead reveal" style="--i:1">Cyprus Communications LLC against a typical provider and an unmanaged baseline. Higher is better. The figures are illustrative demo data.</p>
         </div>
 
         <div class="bench reveal">
@@ -532,96 +519,127 @@
           </div>
           <div class="bench__rows" id="bench-rows"></div>
           <table class="bench__table" id="bench-table" hidden>
-            <caption class="visually-hidden">Capability scores by model generation</caption>
+            <caption class="visually-hidden">Service levels by provider type</caption>
             <thead><tr id="bench-table-head"></tr></thead>
             <tbody id="bench-table-body"></tbody>
           </table>
-          <p class="bench__note">Scores are illustrative demo data for this showcase, normalised to a 0–100 scale. They exist to demonstrate the visualisation, not to report published evaluations.</p>
+          <p class="bench__note">Scores are illustrative demo data for this fictional firm, normalised so 100 is the best shown. They are not a published audit.</p>
         </div>
       </div>
     </section>
 
-    <!-- ================================================================
-         CASE STUDY — the site the model built
-         ================================================================ -->
-    <section class="section" id="case-study" aria-labelledby="case-title">
+    <section class="section" id="row" aria-labelledby="row-title">
       <div class="container">
         <div class="case">
           <div class="case__copy reveal">
-            <p class="section__index">05 — Case study</p>
-            <h2 class="section__title" id="case-title">An eleven-page telecom site, designed and built <span class="serif gradient-text">in one session.</span></h2>
-            <p class="section__lead">Given a single brief, the model produced <em>Cyprus Communications</em>: a cinematic landing page, a traditional corporate subsite with plan catalogs, careers and application flows, accessible forms with validation, and its own design documentation. It's embedded live on the right.</p>
+            <p class="section__index">06 — Right-of-way</p>
+            <h2 class="section__title" id="row-title">A permit package, <span class="serif gradient-text">not a brochure.</span></h2>
+            <p class="section__lead">For a business that needs a lateral built: 3D route and structure design, the clearance the roadway authority asks for, and a status the client can read without calling the municipality.</p>
             <dl class="case__stats">
-              <div><dt>pages shipped</dt><dd>11</dd></div>
-              <div><dt>design modes</dt><dd>2</dd></div>
-              <div><dt>runtime dependencies</dt><dd>0</dd></div>
-              <div><dt>accessibility baseline</dt><dd>WCAG-minded</dd></div>
+              <div><dt>drawing set</dt><dd>3D + plan</dd></div>
+              <div><dt>authority</dt><dd>ROW office</dd></div>
+              <div><dt>this sheet</dt><dd>Permit 26-118</dd></div>
+              <div><dt>built for</dt><dd>Business sites</dd></div>
             </dl>
             <div class="hero__actions">
-              <a class="btn btn--primary" href="cyprus-communications/index.html">Open the site</a>
-              <a class="btn btn--ghost" href="cyprus-communications/docs/README.md">Read its design docs</a>
+              <a class="btn btn--primary" href="#consult">Ask about a route</a>
+              <a class="btn btn--ghost" href="#playground">Open permit status</a>
             </div>
           </div>
 
           <div class="device reveal" style="--i:1">
             <div class="device__bar">
               <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-              <span class="device__url">cyprus-communications/index.html</span>
+              <span class="device__url">permit 26-118 · Acropolis Ltd lateral</span>
             </div>
             <div class="device__screen">
-              <iframe src="cyprus-communications/index.html" title="Live preview of the Cyprus Communications demo site" loading="lazy" tabindex="-1"></iframe>
-              <a class="device__overlay" href="cyprus-communications/index.html" aria-label="Open Cyprus Communications in full">
-                <span class="btn btn--primary btn--sm">Open full site ↗</span>
-              </a>
+              <article class="permit-sheet">
+                <header class="permit-sheet__head">
+                  <span>Cyprus Communications LLC</span>
+                  <strong>ROW-26-118</strong>
+                </header>
+                <h3>Acropolis Ltd · Strovolos lateral</h3>
+                <p>4-way conduit, pole P12 to cabinet C3. Clearance 1.2 m from the face of curb. Business entrance only.</p>
+                <ol class="permit-sheet__steps">
+                  <li class="is-done"><span>Survey</span><b>Filed</b></li>
+                  <li class="is-done"><span>3D route</span><b>Issued</b></li>
+                  <li class="is-now"><span>Authority review</span><b>In desk</b></li>
+                  <li><span>Build window</span><b>Waiting</b></li>
+                </ol>
+              </article>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ================================================================
-         UNDER THE HOOD
-         ================================================================ -->
     <section class="section" id="how" aria-labelledby="how-title">
       <div class="container">
         <div class="section__head">
           <div class="reveal">
-            <p class="section__index">06 — Under the hood</p>
-            <h2 class="section__title" id="how-title">No frameworks. No API keys. <span class="serif gradient-text">Just the web.</span></h2>
+            <p class="section__index">07 — Engagement</p>
+            <h2 class="section__title" id="how-title">How an engagement <span class="serif gradient-text">starts.</span></h2>
           </div>
-          <p class="section__lead reveal" style="--i:1">This page is itself an artifact of the model's craft: hand-written HTML, CSS, and vanilla JavaScript, deployable anywhere a static file can live.</p>
+          <p class="section__lead reveal" style="--i:1">Three things a buyer should be able to point at before signing. All of them are part of the retainer or the design scope, not an extra product.</p>
         </div>
-
         <div class="facts">
           <div class="fact reveal" style="--i:0">
             <span class="fact__num">01</span>
-            <h3>Zero dependencies</h3>
-            <p>Canvas particle field, syntax highlighting, drag and drop, charts and the command palette are all written from scratch. The only network requests are web fonts.</p>
+            <h3>A named response</h3>
+            <p>Fifteen minutes to first response on the retainer, around the clock. The clock starts when the ticket is opened, not when someone next checks mail.</p>
           </div>
           <div class="fact reveal" style="--i:1">
             <span class="fact__num">02</span>
-            <h3>Honest simulations</h3>
-            <p>The demos replay scripted model output so they work offline and on GitHub Pages. Swap the fixtures for a real endpoint and the UI stays identical.</p>
+            <h3>One incident, one record</h3>
+            <p>Alert, diagnosis, the change, the check that failed and then passed, and the note the client actually received. Ticket 1842 above is the shape of that record.</p>
           </div>
           <div class="fact reveal" style="--i:2">
             <span class="fact__num">03</span>
-            <h3>Accessible by default</h3>
-            <p>Semantic landmarks, keyboard-operable controls, live regions for streamed text, a table fallback for the chart, and full <code>prefers-reduced-motion</code> support.</p>
+            <h3>A permit you can track</h3>
+            <p>Survey, 3D route, authority review, build window. The roadway office stays in the loop, and the business sees the same status we do.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" aria-label="Get started">
+    <section class="section" id="consult" aria-labelledby="consult-title">
       <div class="container">
-        <div class="cta-band reveal">
-          <span class="pill"><span class="pill__dot"></span> Ready when you are</span>
-          <h2>Point it at your codebase and watch it work.</h2>
-          <p>Fable 5 plans, edits, tests, and ships with the same care you saw above — on a single file or a monorepo.</p>
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="#playground">Back to the playground</a>
-            <button class="btn btn--ghost" type="button" data-palette-open>Open command palette <span class="kbd">⌘K</span></button>
+        <div class="consult reveal">
+          <div class="consult__copy">
+            <p class="section__index">08 — Consult</p>
+            <h2 id="consult-title">Tell us which problem is yours.</h2>
+            <p>Managed IT, a right-of-way design, or both. This form stays in the browser. Nothing is sent. The company, the address, and the number below are invented for this demo.</p>
+            <ul class="consult__meta">
+              <li>12 Makarios Avenue, Nicosia 1065</li>
+              <li><a href="tel:+35722123456">+357 22 123 456</a></li>
+              <li><a href="mailto:desk@cypruscomm.demo">desk@cypruscomm.demo</a></li>
+            </ul>
           </div>
+          <form class="consult__form" id="consult-form" novalidate>
+            <p class="consult__success" id="consult-success" role="status" hidden>Request noted on this page only. In a real engagement we would reply within one business day.</p>
+            <label class="consult__field">
+              <span>Name</span>
+              <input name="name" type="text" autocomplete="name" required>
+            </label>
+            <label class="consult__field">
+              <span>Company</span>
+              <input name="company" type="text" autocomplete="organization" required>
+            </label>
+            <label class="consult__field">
+              <span>Work email</span>
+              <input name="email" type="email" autocomplete="email" required>
+            </label>
+            <label class="consult__field">
+              <span>What do you need?</span>
+              <select name="need" required>
+                <option value="">Choose one</option>
+                <option>Managed IT retainer</option>
+                <option>Right-of-way design and permitting</option>
+                <option>Both</option>
+              </select>
+            </label>
+            <button class="btn btn--primary" type="submit">Request a consult</button>
+          </form>
         </div>
       </div>
     </section>
@@ -634,51 +652,50 @@
           <a class="brand" href="#top">
             <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
               <rect width="32" height="32" rx="8" fill="url(#brand-grad)"/>
-              <path d="M10 8h13v3.4h-9.2v4.5h8v3.4h-8V24H10z" fill="#06070b"/>
+              <path d="M21.5 10.2a7.2 7.2 0 1 0 0 11.6" fill="none" stroke="#06070b" stroke-width="3.2" stroke-linecap="round"/>
             </svg>
-            <span>Fable</span>
-            <span class="brand__version">v5.1</span>
+            <span>Cyprus</span>
+            <span class="brand__version">LLC</span>
           </a>
-          <p>A capability showcase built as a static demo. Model names, figures, and transcripts on this page are illustrative and run locally in your browser.</p>
+          <p>Fictional managed-service and right-of-way design practice. Staff, addresses, phone numbers, and statistics on this page are invented for a demo.</p>
         </div>
         <div>
-          <h2>Tour</h2>
+          <h2>On this page</h2>
           <ul>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#playground">Playground</a></li>
-            <li><a href="#agent">Agent run</a></li>
-            <li><a href="#benchmarks">Benchmarks</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#skills">How support runs</a></li>
+            <li><a href="#agent">One incident</a></li>
+            <li><a href="#row">Right-of-way</a></li>
           </ul>
         </div>
         <div>
-          <h2>Artifacts</h2>
+          <h2>Offers</h2>
           <ul>
-            <li><a href="cyprus-communications/index.html">Cyprus Communications</a></li>
-            <li><a href="cyprus-communications/sitemap.html">Site directory</a></li>
-            <li><a href="cyprus-communications/docs/design-system.md">Design system notes</a></li>
+            <li><a href="#services">Managed IT</a></li>
+            <li><a href="#row">3D design and permitting</a></li>
+            <li><a href="#benchmarks">Service levels</a></li>
+            <li><a href="#consult">Request a consult</a></li>
           </ul>
         </div>
         <div>
-          <h2>Source</h2>
+          <h2>Desk</h2>
           <ul>
-            <li><a href="styles/showcase.css">showcase.css</a></li>
-            <li><a href="js/playground.js">playground.js</a></li>
-            <li><a href="js/agent.js">agent.js</a></li>
-            <li><a href="README.md">README</a></li>
+            <li>12 Makarios Avenue, Nicosia 1065</li>
+            <li><a href="tel:+35722123456">+357 22 123 456</a></li>
+            <li><a href="mailto:desk@cypruscomm.demo">desk@cypruscomm.demo</a></li>
           </ul>
         </div>
       </div>
       <div class="site-footer__meta">
-        <span>&copy; 2026 Fable 5 showcase · demo content</span>
+        <span>&copy; 2026 Cyprus Communications LLC · fictional demo</span>
         <span>Press <span class="kbd">⌘K</span> to jump anywhere</span>
       </div>
     </div>
   </footer>
 
-  <!-- Command palette -->
   <div class="palette" id="palette" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
     <div class="palette__panel">
-      <input class="palette__input" id="palette-input" type="text" placeholder="Jump to a section or run a demo…" aria-label="Search commands" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list">
+      <input class="palette__input" id="palette-input" type="text" placeholder="Jump to a section or replay a desk demo…" aria-label="Search commands" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list">
       <ul class="palette__list" id="palette-list" role="listbox"></ul>
       <div class="palette__hint">
         <span><span class="kbd">↑↓</span> navigate</span>
