@@ -1,7 +1,7 @@
 /**
- * showcase.js — Shared runtime for the Fable 5 showcase
+ * showcase.js — Shared runtime for the Cyprus Communications LLC site
  * ---------------------------------------------------------------------------
- * Exposes `window.Fable` (tiny utility namespace used by the demo scripts)
+ * Exposes `window.Desk` (tiny utility namespace used by the demo scripts)
  * and wires page-level behaviour:
  *   - header state, scroll progress, mobile nav, scroll-spy
  *   - reveal-on-scroll and hero entrance
@@ -81,7 +81,7 @@
   }
 
   /**
-   * Streams `text` into `el` in small token-like chunks.
+   * Streams `text` into `el` in small chunks.
    * Returns a promise; honours `run.cancelled`.
    */
   function stream(el, text, opts) {
@@ -115,7 +115,9 @@
     py: "def return if elif else for in while import from as class with async await yield lambda try except finally raise pass None True False not and or is",
     sql: "select from where with as group by order having join left inner on count sum avg date_trunc interval and or not in case when then else end desc asc limit over partition",
     json: "true false null",
-    html: ""
+    html: "",
+    ps: "if else foreach function param return try catch finally throw true false null",
+    macro: "ticket priority site impact contact"
   };
 
   function highlight(code, lang) {
@@ -126,7 +128,7 @@
     kw.forEach(function (k) { kwSet[k.toLowerCase()] = true; });
 
     var re;
-    if (lang === "py") {
+    if (lang === "py" || lang === "ps" || lang === "macro") {
       re = /(#.*$)|("""[\s\S]*?"""|f?"(?:\\.|[^"\\])*"|f?'(?:\\.|[^'\\])*')|(\b\d+(?:\.\d+)?\b)|(\b[A-Za-z_]\w*)(?=\()|(\b[A-Z][A-Za-z0-9_]*\b)|(\b[A-Za-z_]\w*\b)|([{}()[\],.;:=<>+\-*/%!|&?]+)/gm;
     } else if (lang === "sql") {
       re = /(--.*$)|('(?:''|[^'])*')|(\b\d+(?:\.\d+)?\b)|(\b[A-Za-z_]\w*)(?=\()|(\b[A-Z][A-Za-z0-9_]*\b)|(\b[A-Za-z_]\w*\b)|([{}()[\],.;:=<>+\-*/%!|&?]+)/gm;
@@ -183,7 +185,7 @@
     return out;
   }
 
-  window.Fable = {
+  window.Desk = {
     reducedMotion: reducedMotion,
     escapeHtml: escapeHtml,
     sleep: sleep,
@@ -442,12 +444,12 @@
     var el = document.getElementById("ticker-text");
     if (!el) return;
     var lines = [
-      "refactoring a 40-file TypeScript service without breaking the public API",
-      "reading a 900-page contract in a single pass and flagging six risky clauses",
-      "describing a photo of Kyrenia harbour, down to the boat registrations",
-      "translating a support ticket into Greek, Turkish, and Russian at once",
-      "opening a pull request with passing tests, unattended",
-      "turning a napkin sketch into a responsive, accessible layout"
+      "restoring the Strovolos finance share after the 08:00 firewall change",
+      "marking 1.2 m clearance on the Acropolis Ltd permit set",
+      "sending the same status line in Greek, Turkish, and Arabic",
+      "opening ticket 1842 from Eleni Christou's email",
+      "confirming last night's backup for Troodos Bakery",
+      "filing the 3D route with the roadway authority"
     ];
     if (reducedMotion()) {
       el.textContent = lines[0];
@@ -529,15 +531,16 @@
 
     function commands() {
       var base = [
-        { label: "Go to Skills", hint: "section", run: function () { jump("#skills"); } },
-        { label: "Go to Playground", hint: "section", run: function () { jump("#playground"); } },
-        { label: "Go to Agent run", hint: "section", run: function () { jump("#agent"); } },
-        { label: "Go to Benchmarks", hint: "section", run: function () { jump("#benchmarks"); } },
-        { label: "Go to Case study", hint: "section", run: function () { jump("#case-study"); } },
-        { label: "Open Cyprus Communications site", hint: "link", run: function () { window.location.href = "cyprus-communications/index.html"; } }
+        { label: "Go to Services", hint: "section", run: function () { jump("#services"); } },
+        { label: "Go to Support", hint: "section", run: function () { jump("#skills"); } },
+        { label: "Go to Desk", hint: "section", run: function () { jump("#playground"); } },
+        { label: "Go to Incident", hint: "section", run: function () { jump("#agent"); } },
+        { label: "Go to Proof", hint: "section", run: function () { jump("#benchmarks"); } },
+        { label: "Go to Right-of-way", hint: "section", run: function () { jump("#row"); } },
+        { label: "Request a consult", hint: "section", run: function () { jump("#consult"); } }
       ];
-      Object.keys(window.Fable.actions).forEach(function (key) {
-        var a = window.Fable.actions[key];
+      Object.keys(window.Desk.actions).forEach(function (key) {
+        var a = window.Desk.actions[key];
         base.push({ label: a.label, hint: a.hint || "demo", run: a.run });
       });
       return base;
@@ -643,5 +646,29 @@
     initCounters();
     initSpotlight();
     initPalette();
+    initConsult();
   });
+
+  function initConsult() {
+    var form = document.getElementById("consult-form");
+    var success = document.getElementById("consult-success");
+    if (!form) return;
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var ok = true;
+      form.querySelectorAll(".consult__field").forEach(function (field) {
+        var input = field.querySelector("input, select");
+        var bad = !input.value.trim() || (input.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(input.value.trim()));
+        field.classList.toggle("is-invalid", bad);
+        if (bad) ok = false;
+      });
+      if (!ok) return;
+      form.reset();
+      success.hidden = false;
+    });
+    form.addEventListener("input", function (event) {
+      var field = event.target.closest(".consult__field");
+      if (field) field.classList.remove("is-invalid");
+    });
+  }
 })();

@@ -1,8 +1,8 @@
-# Fable 5 — capability showcase
+# Cyprus Communications LLC
 
-A single-page, dependency-free demo site that shows off what a frontier AI model can do: streaming code generation, visible reasoning, grounded vision, structured extraction, multilingual output, million-token recall, a prompt-to-UI playground, and a replayable end-to-end agent run.
+A static marketing page for a fictional managed-service provider. The firm runs a retained IT desk for businesses and designs telecom routes in the public right-of-way, including 3D drawings and permit packages.
 
-Everything runs in the browser. There is no build step, no framework, and no API key: the "model output" is scripted client-side so the page works offline and on GitHub Pages.
+The company, staff, addresses, phone numbers, and statistics are invented for this demo.
 
 ## Run it
 
@@ -11,41 +11,30 @@ python3 -m http.server 8080
 # open http://localhost:8080/
 ```
 
-Opening `index.html` directly from disk also works.
+Opening `index.html` from disk also works. Paths are relative, so the same files deploy on GitHub Pages from the repository root.
 
-## What's on the page
+## What is on the page
 
-| Section | What it demonstrates | Where |
-|---------|----------------------|-------|
-| Hero | Pointer-reactive particle field, live task ticker, count-up stats | `js/showcase.js` |
-| Skills | Seven looping micro-demos (code stream, reasoning trace, vision, JSON extraction, multilingual, haystack, speed gauge) | `js/skills.js` |
-| Playground | Type a prompt → rationale streams → markup streams → a working component mounts (pricing toggle, weather, validated signup form, drag-and-drop kanban, animated sparkline) | `js/playground.js` |
-| Agent | Plan → explore → edit → test → ship, with a terminal, live diff, pause/restart/2× controls | `js/agent.js` |
-| Benchmarks | Animated grouped bars with a real `<table>` fallback | `js/bench.js` |
-| Case study | The previously built **Cyprus Communications** telecom site, embedded live | `cyprus-communications/` |
+| Section | What it shows |
+|---------|----------------|
+| Services | Managed IT retainer, and right-of-way design and permitting |
+| Support | Scripted desk work: runbook, incident trace, survey markup, ticket from email, status line, knowledge-base search, time to first response |
+| Desk | Scripted replies that mount a plan card, portal sign-in, ticket board, ticket chart, or permit status |
+| Incident | Replay of ticket 1842, with pause, restart, and 2× |
+| Proof | Illustrative service levels, as bars or a table |
+| Consult | A form that stays in the browser and does not send anything |
 
-Press `⌘K` / `Ctrl+K` anywhere for a command palette that jumps to sections and replays demos.
+`cyprus-communications/` is an earlier fiber-retail demo. It is not linked from this page.
 
 ## File map
 
 ```
-index.html                 the showcase
-styles/tokens.css          design tokens (dark theme, aurora accents, type scale)
-styles/showcase.css        all layout + component styles
-js/showcase.js             shared utils (stream, highlight, run tokens) + chrome, hero canvas, palette
-js/skills.js               the seven skill-card demos
-js/playground.js           prompt → UI pipeline and component interactivity
-js/agent.js                scripted agent timeline player
-js/bench.js                benchmark chart + table
-cyprus-communications/     the earlier multi-page telecom demo site (unchanged, still self-contained)
+index.html            the page
+styles/tokens.css     colour, type, spacing
+styles/showcase.css   layout
+js/showcase.js        header, hero field, command palette, consult form
+js/skills.js          support panels
+js/playground.js      desk tools
+js/agent.js           incident replay
+js/bench.js           service-level chart
 ```
-
-## Honesty notes
-
-- Benchmark numbers are illustrative and normalised to 0–100. They exist to demonstrate the visualisation, not to report published evaluations.
-- Playground and agent transcripts are fixtures. Swapping the fixtures for a real endpoint would leave the UI unchanged.
-- User-typed prompts are only ever rendered as text, never as HTML.
-
-## Accessibility
-
-Semantic landmarks and a skip link, keyboard-operable controls, `aria-live` regions for streamed text, a table alternative for the chart, visible focus styles, and full `prefers-reduced-motion` support (every animation collapses to its final state).

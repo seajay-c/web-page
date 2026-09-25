@@ -12,7 +12,7 @@
 (function () {
   "use strict";
 
-  var F = window.Fable;
+  var F = window.Desk;
   if (!F) return;
 
   /* ------------------------------------------------------------------ */
@@ -36,65 +36,61 @@
   var TEMPLATES = [
     {
       id: "pricing",
-      keys: ["pricing", "price", "plan", "subscription", "tier"],
-      title: "Pricing card",
-      narration: "Pricing cards live or die on hierarchy, so the price is the largest element and the billing toggle sits beside the plan name — the two numbers you compare are one glance apart. The CTA is the only filled button. I've wired the toggle so yearly shows the effective monthly price plus what you save.",
+      keys: ["pricing", "price", "plan", "retainer", "managed"],
+      title: "Managed plan",
+      narration: "The retainer is the number a buyer compares, so it sits largest, with monthly and yearly beside the plan name. Yearly shows the effective monthly figure and what a full year saves. The list under it is the desk you actually get.",
       html: [
         '<article class="pg-pricing">',
         '  <div class="pg-pricing__top">',
-        '    <span class="pg-pricing__name">Fiber 1 Gbps</span>',
+        '    <span class="pg-pricing__name">Managed desk</span>',
         '    <div class="pg-pricing__toggle" role="group" aria-label="Billing period">',
         '      <button type="button" data-period="monthly" aria-pressed="true">Monthly</button>',
         '      <button type="button" data-period="yearly" aria-pressed="false">Yearly</button>',
         '    </div>',
         '  </div>',
-        '  <p class="pg-pricing__price">€<span data-price>39</span><small>/ month</small></p>',
+        '  <p class="pg-pricing__price">€<span data-price>2400</span><small>/ month</small></p>',
         '  <p class="pg-pricing__save" data-save aria-live="polite"></p>',
         '  <ul>',
-        '    <li>Symmetrical 1,000 Mbps</li>',
-        '    <li>Wi-Fi 7 router included</li>',
-        '    <li>No data caps, ever</li>',
-        '    <li>Installed within 5 working days</li>',
+        '    <li>15-minute first response, 24/7</li>',
+        '    <li>Microsoft 365, endpoints, backup</li>',
+        '    <li>Monitoring that pages a person</li>',
+        '    <li>Security reviews each quarter</li>',
         '  </ul>',
-        '  <button class="pg-pricing__cta" type="button">Start 30-day trial</button>',
+        '  <button class="pg-pricing__cta" type="button">Request this retainer</button>',
         '</article>'
       ].join("\n")
     },
     {
-      id: "weather",
-      keys: ["weather", "forecast", "temperature", "nicosia"],
-      title: "Weather widget",
-      narration: "For a glanceable widget the current temperature dominates, conditions sit in a quieter line under the city, and the five-day strip uses one consistent cell so the eye can scan temperatures horizontally. The gradient tracks a warm, clear evening; swap it per condition.",
+      id: "permit",
+      keys: ["permit", "right-of-way", "right of way", "row", "lateral", "acropolis"],
+      title: "Permit status",
+      narration: "A permit card should answer where the package is, not how pretty the drawing looks. Four stages, one of them current, plus the clearance and the authority that has the file. This one is the Acropolis Ltd lateral.",
       html: [
-        '<article class="pg-weather" aria-label="Weather in Nicosia">',
-        '  <div class="pg-weather__head">',
-        '    <div>',
-        '      <div class="pg-weather__city">Nicosia</div>',
-        '      <div class="pg-weather__cond">Clear · feels like 33°</div>',
-        '    </div>',
-        '    <div class="pg-weather__sun" aria-hidden="true"></div>',
+        '<article class="pg-permit" aria-label="Permit 26-118 status">',
+        '  <div class="pg-permit__top">',
+        '    <span class="pg-permit__id">ROW-26-118</span>',
+        '    <span class="pg-permit__badge">In review</span>',
         '  </div>',
-        '  <div class="pg-weather__temp">31°</div>',
-        '  <div class="pg-weather__bar" title="UV index 8 of 11"><i style="--w: 72%"></i></div>',
-        '  <div class="pg-weather__days">',
-        '    <div><span>Sat</span><b>32°</b><span>Sunny</span></div>',
-        '    <div><span>Sun</span><b>33°</b><span>Sunny</span></div>',
-        '    <div><span>Mon</span><b>30°</b><span>Breezy</span></div>',
-        '    <div><span>Tue</span><b>28°</b><span>Cloudy</span></div>',
-        '    <div><span>Wed</span><b>29°</b><span>Clear</span></div>',
-        '  </div>',
+        '  <h4>Acropolis Ltd lateral</h4>',
+        '  <p>Strovolos · pole P12 to cabinet C3 · clearance 1.2 m</p>',
+        '  <ol>',
+        '    <li class="is-done">Survey filed</li>',
+        '    <li class="is-done">3D route issued</li>',
+        '    <li class="is-now">Roadway authority review</li>',
+        '    <li>Build window</li>',
+        '  </ol>',
         '</article>'
       ].join("\n")
     },
     {
       id: "signup",
-      keys: ["signup", "sign up", "sign-up", "register", "form", "login", "account", "password"],
-      title: "Signup form",
-      narration: "Two fields, one action. Validation runs on submit and then live per field, so nobody is shouted at before they've finished typing. The strength meter scores length, case, digits, and symbols and updates on every keystroke. Errors are tied to their inputs for screen readers.",
+      keys: ["signup", "sign up", "sign-up", "register", "form", "login", "portal", "password", "sign-in", "signin"],
+      title: "Portal sign-in",
+      narration: "Work email and a password, then one action. The desk checks the email shape and asks for eight characters before it will send a sign-in. The strength meter updates as the password is typed.",
       html: [
         '<form class="pg-form" novalidate data-pg-form>',
-        '  <h4>Create your account</h4>',
-        '  <p>Free for 14 days. No card required.</p>',
+        '  <h4>Client portal</h4>',
+        '  <p>Sign in to see your tickets and permit status.</p>',
         '  <label class="pg-field" data-field="email">',
         '    Email',
         '    <input type="email" name="email" placeholder="you@example.com" autocomplete="off" aria-describedby="pg-email-err">',
@@ -106,51 +102,51 @@
         '    <small id="pg-pass-err" role="alert"></small>',
         '  </label>',
         '  <div class="pg-strength" data-level="0" aria-hidden="true"><i></i><i></i><i></i><i></i></div>',
-        '  <button type="submit">Create account</button>',
+        '  <button type="submit">Sign in</button>',
         '</form>'
       ].join("\n")
     },
     {
       id: "kanban",
-      keys: ["kanban", "board", "todo", "task", "drag", "trello"],
-      title: "Kanban board",
-      narration: "Three columns, native HTML5 drag and drop, no library. Columns highlight while a card is over them, counts update on drop, and the cards keep a tag colour so status is readable even at a glance. Try dragging a card between columns.",
+      keys: ["kanban", "board", "todo", "task", "drag", "ticket", "incident", "queue"],
+      title: "Ticket board",
+      narration: "Three columns for the live queue. Drag a ticket to move it. Counts update when it lands. Tags mark a P1, a request, or a change so the board is readable at a glance.",
       html: [
         '<div class="pg-kanban">',
         '  <section class="pg-col" data-col="todo" aria-label="To do">',
-        '    <header class="pg-col__head"><span>To do</span><span class="pg-col__count">3</span></header>',
-        '    <article class="pg-task" draggable="true" id="pg-t1"><span class="pg-task__tag pg-task__tag--feat">Feature</span>Dark mode toggle</article>',
-        '    <article class="pg-task" draggable="true" id="pg-t2"><span class="pg-task__tag pg-task__tag--bug">Bug</span>Modal traps focus twice</article>',
-        '    <article class="pg-task" draggable="true" id="pg-t3"><span class="pg-task__tag pg-task__tag--docs">Docs</span>Write migration guide</article>',
+        '    <header class="pg-col__head"><span>Queue</span><span class="pg-col__count">3</span></header>',
+        '    <article class="pg-task" draggable="true" id="pg-t1"><span class="pg-task__tag pg-task__tag--bug">P1</span>Finance share down · Strovolos</article>',
+        '    <article class="pg-task" draggable="true" id="pg-t2"><span class="pg-task__tag pg-task__tag--feat">Request</span>New starter laptop</article>',
+        '    <article class="pg-task" draggable="true" id="pg-t3"><span class="pg-task__tag pg-task__tag--docs">Change</span>Mailbox restore · finance</article>',
         '  </section>',
         '  <section class="pg-col" data-col="doing" aria-label="In progress">',
-        '    <header class="pg-col__head"><span>In progress</span><span class="pg-col__count">1</span></header>',
-        '    <article class="pg-task" draggable="true" id="pg-t4"><span class="pg-task__tag pg-task__tag--feat">Feature</span>Rate limit /api/quote</article>',
+        '    <header class="pg-col__head"><span>On call</span><span class="pg-col__count">1</span></header>',
+        '    <article class="pg-task" draggable="true" id="pg-t4"><span class="pg-task__tag pg-task__tag--bug">P1</span>VPN route restore · 1842</article>',
         '  </section>',
         '  <section class="pg-col" data-col="done" aria-label="Done">',
-        '    <header class="pg-col__head"><span>Done</span><span class="pg-col__count">1</span></header>',
-        '    <article class="pg-task" draggable="true" id="pg-t5"><span class="pg-task__tag pg-task__tag--bug">Bug</span>Empty email accepted</article>',
+        '    <header class="pg-col__head"><span>Closed</span><span class="pg-col__count">1</span></header>',
+        '    <article class="pg-task" draggable="true" id="pg-t5"><span class="pg-task__tag pg-task__tag--docs">Change</span>Backup job rerun · bakery</article>',
         '  </section>',
         '</div>'
       ].join("\n")
     },
     {
       id: "chart",
-      keys: ["chart", "revenue", "sparkline", "graph", "plot", "sales", "trend"],
-      title: "Revenue chart",
-      narration: "A sparkline should answer one question — is it going up? — so there are no axes, just the headline value, the delta, and a stroked line that draws itself in. The area fill fades toward the baseline to add weight without hiding the shape. Months are labelled at the ends only.",
+      keys: ["chart", "ticket", "tickets", "sparkline", "graph", "uptime", "trend", "closed"],
+      title: "Ticket chart",
+      narration: "One question: are we closing more than we open? The line is tickets closed each month. No axis clutter. The months mark the year the retainer has been running.",
       html: (function () {
         var p = sparkPaths();
         return [
-          '<article class="pg-chart" aria-label="Monthly revenue, last 12 months">',
+          '<article class="pg-chart" aria-label="Tickets closed, last 12 months">',
           '  <div class="pg-chart__head">',
           '    <div>',
-          '      <div class="pg-chart__title">Monthly recurring revenue</div>',
-          '      <div class="pg-chart__value">€88.4k</div>',
+          '      <div class="pg-chart__title">Tickets closed</div>',
+          '      <div class="pg-chart__value">88</div>',
           '    </div>',
-          '    <span class="pg-chart__delta">▲ 110% YoY</span>',
+          '    <span class="pg-chart__delta">this month</span>',
           '  </div>',
-          '  <svg viewBox="0 0 ' + p.w + ' ' + p.h + '" role="img" aria-label="Revenue rising from 42k to 88k">',
+          '  <svg viewBox="0 0 ' + p.w + ' ' + p.h + '" role="img" aria-label="Tickets closed rising over twelve months">',
           '    <path class="area" d="' + p.area + '"/>',
           '    <path class="line" d="' + p.line + '"/>',
           '  </svg>',
@@ -181,12 +177,12 @@
     return {
       id: "note",
       title: "Note",
-      narration: "This offline demo ships with five scripted components, and that request doesn't map to one of them. In a live session I'd build it from scratch; here I'll mount a placeholder that echoes the brief so the pipeline still runs end to end.",
+      narration: "The desk demo has five scripted tools, and that request is not one of them. Here is the note back, with your words quoted as text.",
       html: [
         '<article class="pg-note">',
         '  <strong>Request received</strong>',
         '  <q>' + F.escapeHtml(prompt) + '</q>',
-        '  <span>Try: pricing card · weather widget · signup form · kanban board · revenue chart</span>',
+        '  <span>Try: managed plan · portal sign-in · ticket board · ticket chart · permit status</span>',
         '</article>'
       ].join("\n")
     };
@@ -208,7 +204,7 @@
   function addMessage(kind, bodyHtml) {
     var node = el(
       '<div class="msg msg--' + kind + '">' +
-        '<span class="msg__avatar" aria-hidden="true">' + (kind === "ai" ? "F5" : "CJ") + "</span>" +
+        '<span class="msg__avatar" aria-hidden="true">' + (kind === "ai" ? "CC" : "You") + "</span>" +
         '<div class="msg__body">' + bodyHtml + "</div>" +
       "</div>"
     );
@@ -326,13 +322,13 @@
           b.setAttribute("aria-pressed", b === period ? "true" : "false");
         });
         var yearly = period.getAttribute("data-period") === "yearly";
-        card.querySelector("[data-price]").textContent = yearly ? "31" : "39";
-        card.querySelector("[data-save]").textContent = yearly ? "Billed €372 a year · you save 20%" : "";
+        card.querySelector("[data-price]").textContent = yearly ? "2040" : "2400";
+        card.querySelector("[data-save]").textContent = yearly ? "Billed €24,480 a year · you save 15%" : "";
         return;
       }
       var cta = e.target.closest(".pg-pricing__cta");
       if (cta) {
-        cta.textContent = "Trial started ✓";
+        cta.textContent = "Request noted ✓";
         cta.disabled = true;
       }
     });
@@ -370,7 +366,7 @@
       var done = document.createElement("div");
       done.className = "pg-success";
       done.setAttribute("role", "status");
-      done.textContent = "Account created. Check your inbox to confirm.";
+      done.textContent = "Sign-in link noted on this page. Nothing was sent.";
       btn.replaceWith(done);
     });
 
@@ -478,7 +474,7 @@
 
     TEMPLATES.forEach(function (t) {
       F.actions["pg-" + t.id] = {
-        label: "Build: " + t.title,
+        label: "Open desk tool: " + t.title,
         hint: "playground",
         run: function () {
           document.getElementById("playground").scrollIntoView({ behavior: "smooth" });
