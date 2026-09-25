@@ -1,6 +1,8 @@
 # Cyprus Communications — documentation
 
-Static multi-page showcase for a fictional telecom brand. No build step; open any HTML file or deploy the repo root to GitHub Pages.
+Static multi-page showcase for a fictional telecom brand. No build step; open any HTML file or deploy to GitHub Pages.
+
+This site lives under `cyprus-communications/` in the repository. The repository root is the [Fable 5 capability showcase](../../index.html), which features this site as a case study of an end-to-end build.
 
 ## Dual design modes
 

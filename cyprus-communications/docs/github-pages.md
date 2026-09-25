@@ -1,6 +1,8 @@
 # Deploying to GitHub Pages
 
-This site is static from the **repository root**. No build command is required.
+> **Location note.** This site now lives in the `cyprus-communications/` folder of the repository; the repository root hosts the Fable 5 capability showcase, which embeds this site as a case study. Everything below still applies — the folder is fully self-contained and uses only relative paths — but the site's URL becomes `<pages-url>/cyprus-communications/`.
+
+This site is static and needs no build command.
 
 ## One-time setup
 
