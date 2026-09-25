@@ -246,24 +246,35 @@
   }
 
   function initScrollSpy() {
-    var links = document.querySelectorAll("[data-spy]");
-    if (!links.length || !("IntersectionObserver" in window)) return;
-    var map = {};
-    links.forEach(function (l) { map[l.getAttribute("data-spy")] = l; });
+    var links = Array.prototype.slice.call(document.querySelectorAll("[data-spy]"));
+    if (!links.length) return;
+    var targets = links.map(function (l) {
+      return { link: l, el: document.getElementById(l.getAttribute("data-spy")) };
+    }).filter(function (t) { return t.el; });
+    var ticking = false;
 
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        links.forEach(function (l) { l.classList.remove("is-active"); });
-        var link = map[entry.target.id];
-        if (link) link.classList.add("is-active");
+    // Active = the last section whose top has crossed the upper third of the
+    // viewport. Works for short sections that never fill a fixed band.
+    function update() {
+      ticking = false;
+      var line = window.innerHeight * 0.34;
+      var active = null;
+      targets.forEach(function (t) {
+        if (t.el.getBoundingClientRect().top <= line) active = t;
       });
-    }, { rootMargin: "-40% 0px -55% 0px" });
+      var atEnd = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      if (atEnd) active = targets[targets.length - 1];
+      targets.forEach(function (t) { t.link.classList.toggle("is-active", t === active); });
+    }
 
-    Object.keys(map).forEach(function (id) {
-      var el = document.getElementById(id);
-      if (el) io.observe(el);
-    });
+    window.addEventListener("scroll", function () {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    }, { passive: true });
+    window.addEventListener("resize", update);
+    update();
   }
 
   function initReveal() {

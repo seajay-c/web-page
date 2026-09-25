@@ -296,6 +296,9 @@
       mount(template.html);
       setStage("preview");
       setStatus("mounted", "tag--live");
+      if (window.matchMedia("(max-width: 960px)").matches) {
+        preview.closest(".stage").scrollIntoView({ behavior: instant ? "auto" : "smooth", block: "start" });
+      }
       var secs = ((performance.now() - t0) / 1000).toFixed(1);
       meta.textContent = template.title + " · " + kb(template.html);
       var note = document.createElement("p");

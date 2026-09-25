@@ -241,9 +241,9 @@
       speedBtn.setAttribute("aria-pressed", state.speed === 2 ? "true" : "false");
     });
 
-    F.onVisible(terminal, function () {
+    F.onVisible(document.getElementById("agent") || terminal, function () {
       if (!state.started) play();
-    }, 0.3);
+    }, 0.15);
 
     F.actions.agent = { label: "Replay agent run", hint: "agent", run: function () {
       document.getElementById("agent").scrollIntoView({ behavior: "smooth" });
