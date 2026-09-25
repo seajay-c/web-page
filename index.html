@@ -3,140 +3,695 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Cyprus Communications — island-wide fiber, 5G, and business connectivity. Demo showcase site.">
-  <title>Cyprus Communications</title>
+  <meta name="description" content="Fable 5 capability showcase — an interactive tour of reasoning, code generation, vision, agentic tool use, multilingual fluency, and million-token context. Runs entirely in your browser.">
+  <meta name="theme-color" content="#06070b">
+  <meta property="og:title" content="Fable 5 — Capability showcase">
+  <meta property="og:description" content="Watch a frontier model plan, code, see, and ship. Interactive demos, zero dependencies.">
+  <meta property="og:type" content="website">
+  <title>Fable 5 — Capability showcase</title>
   <!--
-    LANDING PAGE ONLY — Apple-inspired cinematic design.
-    All other pages use traditional corporate/telecom patterns (see docs/design-system.md).
-    CSS load order: tokens → base → layout → components → landing.
+    Single-page showcase. No build step, no framework, no API keys.
+    Every demo on this page is a scripted, client-side simulation of model
+    output so it can be hosted on GitHub Pages and opened from file://.
+    CSS: tokens → showcase.  JS: showcase → skills → playground → agent → bench.
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/tokens.css">
-  <link rel="stylesheet" href="styles/base.css">
-  <link rel="stylesheet" href="styles/layout.css">
-  <link rel="stylesheet" href="styles/components.css">
-  <link rel="stylesheet" href="styles/landing.css">
+  <link rel="stylesheet" href="styles/showcase.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7cff'/%3E%3Cstop offset='.5' stop-color='%234fe8ff'/%3E%3Cstop offset='1' stop-color='%23ff6fb5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Cpath d='M10 8h13v3.4h-9.2v4.5h8v3.4h-8V24H10z' fill='%2306070b'/%3E%3C/svg%3E">
 </head>
-<!-- data-page drives active nav highlighting in js/main.js -->
-<body class="landing-page" data-page="home">
-  <!-- Skip link: first focusable control for keyboard users -->
+<body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="brand-grad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#8b7cff"/>
+        <stop offset="0.5" stop-color="#4fe8ff"/>
+        <stop offset="1" stop-color="#ff6fb5"/>
+      </linearGradient>
+      <linearGradient id="pg-area" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#4fe8ff" stop-opacity="0.35"/>
+        <stop offset="1" stop-color="#4fe8ff" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+  </svg>
 
   <header class="site-header">
-    <div class="site-header__inner">
-      <a class="logo" href="index.html">Cyprus <span>Communications</span></a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
-      <nav class="nav-primary" id="primary-nav" aria-label="Primary">
-        <ul class="nav-primary__list">
-          <li><a href="index.html" data-nav="home">Home</a></li>
-          <li><a href="services/index.html" data-nav="services">Services</a></li>
-          <li><a href="about/index.html" data-nav="about">About</a></li>
-          <li><a href="careers/index.html" data-nav="careers">Careers</a></li>
-          <li><a href="contact/index.html" data-nav="contact">Contact</a></li>
+    <div class="container site-header__inner">
+      <a class="brand" href="#top" aria-label="Fable 5 home">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="url(#brand-grad)"/>
+          <path d="M10 8h13v3.4h-9.2v4.5h8v3.4h-8V24H10z" fill="#06070b"/>
+        </svg>
+        <span>Fable</span>
+        <span class="brand__version">v5.1</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+        <span></span>
+      </button>
+
+      <nav class="nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#skills" data-spy="skills">Skills</a></li>
+          <li><a class="nav__link" href="#playground" data-spy="playground">Playground</a></li>
+          <li><a class="nav__link" href="#agent" data-spy="agent">Agent</a></li>
+          <li><a class="nav__link" href="#benchmarks" data-spy="benchmarks">Benchmarks</a></li>
+          <li><a class="nav__link" href="#case-study" data-spy="case-study">Case study</a></li>
         </ul>
-        <div class="nav-utility">
-          <a href="careers/index.html">Careers</a>
-          <a class="btn btn--primary" href="contact/index.html">Contact</a>
+        <div class="nav-actions">
+          <button class="palette-trigger" type="button" data-palette-open>
+            <span>Jump to…</span>
+            <span class="kbd">⌘K</span>
+          </button>
+          <a class="btn btn--primary btn--sm" href="#playground">Open playground</a>
         </div>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <!--
-      First viewport budget (locked): brand, one headline, one supporting
-      sentence, one CTA group, one dominant full-bleed image.
-      No cards, stats, overlay badges, or secondary marketing blocks.
-    -->
-    <section class="landing-hero" aria-label="Introduction">
-      <div class="landing-hero__content">
-        <p class="landing-hero__brand">Cyprus <span>Communications</span></p>
-        <h1>Connectivity that feels invisible.</h1>
-        <p class="landing-hero__support">Fiber, 5G, and business networks engineered for every shoreline of the island.</p>
-        <div class="btn-group">
-          <a class="btn btn--primary" href="services/index.html">Explore plans</a>
-          <a class="btn btn--ghost" href="about/index.html">Our story</a>
+    <!-- ================================================================
+         HERO
+         ================================================================ -->
+    <section class="hero" id="top" aria-label="Introduction">
+      <canvas class="hero__field" id="hero-field" aria-hidden="true"></canvas>
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <span class="pill" data-enter style="--i:0">
+            <span class="pill__dot"></span>
+            Fable 5 · Interactive capability tour
+          </span>
+          <h1 class="hero__title" data-enter style="--i:1">
+            Built to think.<br>
+            Trained to <em class="serif">ship.</em>
+          </h1>
+          <p class="hero__lead" data-enter style="--i:2">
+            Reasoning, code, vision, and autonomous tool use in one model. This page is a live tour of those skills, and every demo on it runs right here in your browser.
+          </p>
+          <div class="hero__actions" data-enter style="--i:3">
+            <a class="btn btn--primary" href="#playground">
+              Try the playground
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </a>
+            <a class="btn btn--ghost" href="#agent">Watch an agent run</a>
+          </div>
+          <p class="ticker" data-enter style="--i:4" aria-live="polite">
+            <span class="ticker__label">now</span>
+            <span class="ticker__text" id="ticker-text"></span><span class="caret" aria-hidden="true"></span>
+          </p>
+        </div>
+
+        <dl class="hero__stats" data-enter style="--i:5">
+          <div class="stat">
+            <dt class="stat__label">context window</dt>
+            <dd class="stat__value"><span data-count="1" data-decimals="0">0</span><small>M tokens</small></dd>
+          </div>
+          <div class="stat">
+            <dt class="stat__label">output speed</dt>
+            <dd class="stat__value"><span data-count="142">0</span><small>tok / s</small></dd>
+          </div>
+          <div class="stat">
+            <dt class="stat__label">languages</dt>
+            <dd class="stat__value"><span data-count="40">0</span><small>+</small></dd>
+          </div>
+          <div class="stat">
+            <dt class="stat__label">modalities</dt>
+            <dd class="stat__value">Text · Image · Code</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SKILLS — bento grid of live micro-demos
+         ================================================================ -->
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <div class="section__head">
+          <div class="reveal">
+            <p class="section__index">01 — Capabilities</p>
+            <h2 class="section__title" id="skills-title">Seven skills. <span class="serif gradient-text">All of them live.</span></h2>
+          </div>
+          <p class="section__lead reveal" style="--i:1">Each card is a self-contained demo. Hover, click, or just watch — they loop on their own and replay on demand.</p>
+        </div>
+
+        <div class="bento">
+          <!-- Code generation -->
+          <article class="card reveal" style="--span: 7; --i:0" data-spotlight>
+            <div class="card__head">
+              <div>
+                <div class="card__kicker">
+                  <span class="card__icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4 1.5 8 5 12M11 4l3.5 4L11 12M9.5 2.5l-3 11"/></svg></span>
+                  <span class="tag tag--live">streaming</span>
+                </div>
+                <h3>Writes code you'd actually merge</h3>
+                <p class="card__desc">Idiomatic, typed, and commented where it matters. Watch a live stream across three languages.</p>
+              </div>
+              <button class="icon-btn" type="button" data-code-replay aria-label="Replay code stream">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8a5.5 5.5 0 1 0 1.6-3.9M2.5 2.5v3h3"/></svg>
+              </button>
+            </div>
+            <div class="card__body">
+              <div class="code-panel">
+                <div class="code-panel__bar">
+                  <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <div class="tabs" role="tablist" aria-label="Language">
+                    <button class="tab is-active" role="tab" aria-selected="true" data-code-tab="ts">rate-limit.ts</button>
+                    <button class="tab" role="tab" aria-selected="false" data-code-tab="py">pipeline.py</button>
+                    <button class="tab" role="tab" aria-selected="false" data-code-tab="sql">cohorts.sql</button>
+                  </div>
+                  <span class="code-panel__meta" id="code-meta">0 tokens</span>
+                </div>
+                <pre class="code" id="code-stream" aria-live="off"></pre>
+              </div>
+            </div>
+          </article>
+
+          <!-- Reasoning -->
+          <article class="card reveal" style="--span: 5; --i:1" data-spotlight>
+            <div class="card__head">
+              <div>
+                <div class="card__kicker">
+                  <span class="card__icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2a4 4 0 0 0-2.5 7.1V11h5V9.1A4 4 0 0 0 8 2ZM6.5 13h3"/></svg></span>
+                  <span class="tag tag--violet">extended thinking</span>
+                </div>
+                <h3>Shows its work</h3>
+                <p class="card__desc">Multi-step reasoning with a visible, verifiable trace.</p>
+              </div>
+              <button class="icon-btn" type="button" data-trace-replay aria-label="Replay reasoning trace">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8a5.5 5.5 0 1 0 1.6-3.9M2.5 2.5v3h3"/></svg>
+              </button>
+            </div>
+            <div class="card__body">
+              <p class="puzzle"><strong>Puzzle.</strong> Three ferries leave Limassol at 06:00. They return every 36, 48, and 60 minutes. When are all three next in port together?</p>
+              <ol class="trace" id="trace">
+                <li class="trace__step"><span class="trace__num">1</span><span>Reframe: the answer is the least common multiple of 36, 48, and 60 minutes after 06:00.</span></li>
+                <li class="trace__step"><span class="trace__num">2</span><span>Factor: 36 = 2²·3², 48 = 2⁴·3, 60 = 2²·3·5.</span></li>
+                <li class="trace__step"><span class="trace__num">3</span><span>Take the highest power of each prime: 2⁴ · 3² · 5 = 720.</span></li>
+                <li class="trace__step"><span class="trace__num">4</span><span>720 minutes is exactly 12 hours. Sanity check: 720 ÷ 36 = 20, ÷ 48 = 15, ÷ 60 = 12 — all whole.</span></li>
+              </ol>
+              <p class="trace__answer" id="trace-answer">All three are in port together at 18:00.</p>
+            </div>
+          </article>
+
+          <!-- Vision -->
+          <article class="card reveal" style="--span: 5; --i:2" data-spotlight>
+            <div class="card__head">
+              <div>
+                <div class="card__kicker">
+                  <span class="card__icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 8s2.5-4.5 6.5-4.5S14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8Z"/><circle cx="8" cy="8" r="2"/></svg></span>
+                  <span class="tag tag--cyan">vision</span>
+                </div>
+                <h3>Sees the details</h3>
+                <p class="card__desc">Grounded detection plus a natural-language description.</p>
+              </div>
+              <button class="icon-btn" type="button" data-vision-replay aria-label="Replay vision analysis">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8a5.5 5.5 0 1 0 1.6-3.9M2.5 2.5v3h3"/></svg>
+              </button>
+            </div>
+            <div class="card__body">
+              <div class="vision">
+                <div class="vision__frame" id="vision-frame">
+                  <svg class="vision__scene" viewBox="0 0 320 200" role="img" aria-label="Stylised illustration of Kyrenia harbour at golden hour">
+                    <defs>
+                      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#1b1f4b"/>
+                        <stop offset="0.55" stop-color="#7a4a7e"/>
+                        <stop offset="1" stop-color="#ffb17a"/>
+                      </linearGradient>
+                      <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#c97a6a"/>
+                        <stop offset="0.3" stop-color="#3a4d7a"/>
+                        <stop offset="1" stop-color="#101a36"/>
+                      </linearGradient>
+                    </defs>
+                    <rect width="320" height="200" fill="url(#sky)"/>
+                    <circle cx="252" cy="42" r="14" fill="#ffd9a0"/>
+                    <circle cx="252" cy="42" r="22" fill="#ffd9a0" opacity="0.18"/>
+                    <path d="M0 120 L40 96 L78 108 L120 84 L165 104 L200 92 L230 100 L260 90 L320 104 L320 122 Z" fill="#2a2450" opacity="0.9"/>
+                    <rect y="120" width="320" height="80" fill="url(#sea)"/>
+                    <!-- castle -->
+                    <rect x="204" y="86" width="90" height="42" fill="#5b4a3f"/>
+                    <rect x="204" y="80" width="90" height="8" fill="#6b5a4d"/>
+                    <path d="M204 80h8v-8h8v8h8v-8h8v8h8v-8h8v8h8v-8h8v8h8v-8h8v8h10" fill="#6b5a4d"/>
+                    <rect x="236" y="70" width="22" height="18" fill="#6b5a4d"/>
+                    <rect x="242" y="98" width="8" height="14" fill="#2a1e18"/>
+                    <rect x="266" y="98" width="8" height="14" fill="#2a1e18"/>
+                    <!-- pier -->
+                    <rect x="180" y="128" width="140" height="6" fill="#3a2f2a"/>
+                    <!-- boats -->
+                    <path d="M34 148 L96 148 L88 162 L42 162 Z" fill="#e8e3d6"/>
+                    <path d="M40 156 h50" stroke="#b34d3f" stroke-width="3"/>
+                    <path d="M64 148 V112" stroke="#e8e3d6" stroke-width="2"/>
+                    <path d="M116 158 L164 158 L158 168 L122 168 Z" fill="#dfe6ee"/>
+                    <path d="M140 158 V128" stroke="#dfe6ee" stroke-width="1.6"/>
+                    <path d="M140 130 L156 152 H140 Z" fill="#ffd9a0" opacity="0.85"/>
+                    <path d="M54 176 L86 176 L82 184 L58 184 Z" fill="#c8d0dc"/>
+                    <!-- reflections -->
+                    <path d="M40 166 h50 M46 170 h38 M120 172 h40 M126 176 h28" stroke="#ffffff" stroke-opacity="0.18" stroke-width="1.5"/>
+                    <!-- gulls -->
+                    <path d="M82 46 q4 -4 8 0 q4 -4 8 0" stroke="#fff" stroke-width="1.4" fill="none" opacity="0.8"/>
+                    <path d="M104 58 q3 -3 6 0 q3 -3 6 0" stroke="#fff" stroke-width="1.2" fill="none" opacity="0.7"/>
+
+                    <!-- detections (revealed by skills.js) -->
+                    <g class="det" data-det="1">
+                      <rect class="det__box" x="200" y="66" width="98" height="66"/>
+                      <g class="det__label" transform="translate(200 56)"><rect width="78" height="10" rx="2"/><text x="3" y="7.4">castle · 0.98</text></g>
+                    </g>
+                    <g class="det" data-det="2">
+                      <rect class="det__box" x="28" y="108" width="74" height="58"/>
+                      <g class="det__label" transform="translate(28 98)"><rect width="88" height="10" rx="2"/><text x="3" y="7.4">fishing boat · 0.96</text></g>
+                    </g>
+                    <g class="det" data-det="3">
+                      <rect class="det__box" x="112" y="124" width="58" height="48"/>
+                      <g class="det__label" transform="translate(112 114)"><rect width="72" height="10" rx="2"/><text x="3" y="7.4">sailboat · 0.93</text></g>
+                    </g>
+                    <g class="det" data-det="4">
+                      <rect class="det__box" x="78" y="40" width="46" height="24"/>
+                      <g class="det__label" transform="translate(78 30)"><rect width="66" height="10" rx="2"/><text x="3" y="7.4">gulls ×2 · 0.88</text></g>
+                    </g>
+                    <g class="det" data-det="5">
+                      <rect class="det__box" x="234" y="24" width="36" height="36"/>
+                      <g class="det__label" transform="translate(234 14)"><rect width="58" height="10" rx="2"/><text x="3" y="7.4">sun · low</text></g>
+                    </g>
+                  </svg>
+                  <div class="vision__scan" aria-hidden="true"></div>
+                </div>
+                <p class="vision__caption" id="vision-caption" aria-live="polite"></p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Structured output -->
+          <article class="card reveal" style="--span: 7; --i:3" data-spotlight>
+            <div class="card__head">
+              <div>
+                <div class="card__kicker">
+                  <span class="card__icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 2C4 2 4 3 4 4v2c0 1-1 2-2 2 1 0 2 1 2 2v2c0 1 0 2 1.5 2M10.5 2c1.5 0 1.5 1 1.5 2v2c0 1 1 2 2 2-1 0-2 1-2 2v2c0 1 0 2-1.5 2"/></svg></span>
+                  <span class="tag tag--magenta">structured output</span>
+                </div>
+                <h3>Turns prose into data</h3>
+                <p class="card__desc">Schema-faithful JSON from messy human text, with every field traceable to its source span.</p>
+              </div>
+              <button class="icon-btn" type="button" data-json-replay aria-label="Replay extraction">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8a5.5 5.5 0 1 0 1.6-3.9M2.5 2.5v3h3"/></svg>
+              </button>
+            </div>
+            <div class="card__body">
+              <div class="split-io">
+                <div class="io">
+                  <div class="io__bar"><span>input · support email</span></div>
+                  <div class="io__body" id="json-source">
+                    Hi — this is <mark data-f="name">Eleni Christou</mark> from <mark data-f="company">Troodos Bakery</mark>. Our <mark data-f="product">Business Connect 500</mark> line at the <mark data-f="location">Platres</mark> branch has been dropping since <mark data-f="since">Tuesday morning</mark>. It's <mark data-f="severity">blocking card payments</mark>, so this is urgent. Best number is <mark data-f="phone">+357 99 123 456</mark>.
+                  </div>
+                </div>
+                <div class="io">
+                  <div class="io__bar"><span>output · ticket.json</span><span class="tag" id="json-status">idle</span></div>
+                  <div class="io__body"><pre id="json-out"></pre></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Multilingual -->
+          <article class="card reveal" style="--span: 4; --i:4" data-spotlight>
+            <div class="card__head">
+              <div>
+                <div class="card__kicker">
+                  <span class="card__icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M2 8h12M8 2c2 2 2 10 0 12M8 2c-2 2-2 10 0 12"/></svg></span>
+                  <span class="tag">multilingual</span>
+                </div>
+                <h3>Fluent in 40+ languages</h3>
+              </div>
+            </div>
+            <div class="card__body">
+              <div class="lang">
+                <p class="lang__text" id="lang-text" lang="en">Your connection is back online. Sorry for the interruption.</p>
+                <div class="lang__meta">
+                  <span class="lang__code" id="lang-code">EN</span>
+                  <span id="lang-name">English</span>
+                  <span class="lang__dots" id="lang-dots" aria-hidden="true"></span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Long context -->
+          <article class="card reveal" style="--span: 4; --i:5" data-spotlight>
+            <div class="card__head">
+              <div>
+                <div class="card__kicker">
+                  <span class="card__icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h10v10H3zM3 6.5h10M3 10h10M6.5 3v10"/></svg></span>
+                  <span class="tag">1M context</span>
+                </div>
+                <h3>Needle in a million tokens</h3>
+              </div>
+              <button class="icon-btn" type="button" data-haystack-run aria-label="Run needle search">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg>
+              </button>
+            </div>
+            <div class="card__body">
+              <div class="haystack">
+                <div class="haystack__doc" id="haystack">
+                  <div class="haystack__beam" aria-hidden="true"></div>
+                </div>
+                <div class="haystack__foot">
+                  <span id="haystack-label">1,048,576 tokens · 2,910 pages</span>
+                  <span class="haystack__result" id="haystack-result"></span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Speed -->
+          <article class="card reveal" style="--span: 4; --i:6" data-spotlight>
+            <div class="card__head">
+              <div>
+                <div class="card__kicker">
+                  <span class="card__icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 1.5 3.5 9H8l-1 5.5L12.5 7H8z"/></svg></span>
+                  <span class="tag tag--live">realtime</span>
+                </div>
+                <h3>Fast enough to feel instant</h3>
+              </div>
+            </div>
+            <div class="card__body">
+              <div class="gauge">
+                <p class="gauge__value"><span id="gauge-value">0</span><small>tok / s</small></p>
+                <canvas class="gauge__spark" id="gauge-spark" aria-hidden="true"></canvas>
+                <div class="gauge__legend"><span>last 60 s</span><span>p50 · 138 &nbsp; p95 · 151</span></div>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Scroll story: coverage -->
-    <section class="landing-section landing-section--coverage" aria-labelledby="story-coverage">
-      <div class="landing-section__inner">
-        <div class="landing-section__copy">
-          <h2 id="story-coverage">Island-wide coverage</h2>
-          <p>From Kyrenia harbor to the Troodos slopes, our network is built for the places people actually live and work.</p>
-          <a class="btn btn--primary" href="about/achievements.html">See our milestones</a>
+    <!-- ================================================================
+         PLAYGROUND — prompt → live UI
+         ================================================================ -->
+    <section class="section" id="playground" aria-labelledby="playground-title">
+      <div class="container">
+        <div class="section__head">
+          <div class="reveal">
+            <p class="section__index">02 — Playground</p>
+            <h2 class="section__title" id="playground-title">Describe it. <span class="serif gradient-text">Watch it get built.</span></h2>
+          </div>
+          <p class="section__lead reveal" style="--i:1">Ask for a component and the model streams its reasoning, writes the code, and mounts a working preview. Pick a prompt or type your own.</p>
+        </div>
+
+        <div class="playground reveal">
+          <div class="chat">
+            <div class="panel__bar">
+              <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span>conversation</span>
+              <span class="tag tag--live">offline demo</span>
+            </div>
+            <div class="chat__log" id="chat-log" role="log" aria-live="polite" aria-relevant="additions">
+              <div class="msg msg--ai">
+                <span class="msg__avatar" aria-hidden="true">F5</span>
+                <div class="msg__body">
+                  <p>Hi. Tell me what you'd like built and I'll assemble it on the right — with the markup on the Code tab. Try one of the prompts below to start.</p>
+                </div>
+              </div>
+            </div>
+            <div class="chips" id="chips" aria-label="Suggested prompts">
+              <button class="chip" type="button" data-prompt="Design a pricing card for a 1 Gbps fiber plan with a monthly/yearly toggle">Pricing card</button>
+              <button class="chip" type="button" data-prompt="Make a weather widget for Nicosia with a 5-day forecast">Weather widget</button>
+              <button class="chip" type="button" data-prompt="Build a signup form with live validation and a password strength meter">Signup form</button>
+              <button class="chip" type="button" data-prompt="Create a kanban board with drag and drop">Kanban board</button>
+              <button class="chip" type="button" data-prompt="Chart monthly revenue for the last 12 months as a sparkline">Revenue chart</button>
+            </div>
+            <form class="chat__form" id="chat-form" autocomplete="off">
+              <label class="visually-hidden" for="chat-input">Describe a component</label>
+              <input class="chat__input" id="chat-input" type="text" placeholder="e.g. a kanban board with drag and drop" maxlength="160">
+              <button class="chat__send" type="submit" id="chat-send" aria-label="Send">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V3M4 7l4-4 4 4"/></svg>
+              </button>
+            </form>
+          </div>
+
+          <div class="stage">
+            <div class="panel__bar">
+              <div class="seg" role="tablist" aria-label="Stage view">
+                <button class="seg__btn" role="tab" aria-selected="true" data-stage-tab="preview" id="tab-preview" aria-controls="pane-preview">Preview</button>
+                <button class="seg__btn" role="tab" aria-selected="false" data-stage-tab="code" id="tab-code" aria-controls="pane-code">Code</button>
+              </div>
+              <span id="stage-meta">nothing mounted</span>
+              <span class="tag" id="stage-status">idle</span>
+            </div>
+            <div class="stage__viewport">
+              <div class="stage__pane" id="pane-preview" role="tabpanel" aria-labelledby="tab-preview">
+                <div class="pg-preview" id="pg-preview">
+                  <div class="pg-empty">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M8 4v5"/></svg>
+                    <span>Your component will mount here. Preview stays interactive: toggles, drag and drop, validation — all wired.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="stage__pane" id="pane-code" role="tabpanel" aria-labelledby="tab-code" hidden>
+                <pre class="stage__code" id="pg-code"></pre>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Scroll story: speed -->
-    <section class="landing-section landing-section--speed landing-section--rtl" aria-labelledby="story-speed">
-      <div class="landing-section__inner">
-        <div class="landing-section__copy">
-          <h2 id="story-speed">Speed without the ceremony</h2>
-          <p>Multi-gig fiber and low-latency 5G so streaming, work, and play stay out of your way.</p>
-          <a class="btn btn--primary" href="services/fiber.html">View fiber plans</a>
+    <!-- ================================================================
+         AGENT — end-to-end run
+         ================================================================ -->
+    <section class="section" id="agent" aria-labelledby="agent-title">
+      <div class="container">
+        <div class="section__head">
+          <div class="reveal">
+            <p class="section__index">03 — Agentic</p>
+            <h2 class="section__title" id="agent-title">From issue to pull request, <span class="serif gradient-text">unattended.</span></h2>
+          </div>
+          <p class="section__lead reveal" style="--i:1">A replay of the model working a real ticket against the case-study repo: it plans, explores, edits, runs tests, and ships — narrating each tool call.</p>
+        </div>
+
+        <div class="agent reveal">
+          <ol class="agent__steps" id="agent-steps" aria-label="Run progress">
+            <li class="step" data-step="plan"><span class="step__dot"><span>1</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg></span><span><span class="step__title">Plan</span><span class="step__sub">Break the ticket down</span></span></li>
+            <li class="step" data-step="explore"><span class="step__dot"><span>2</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg></span><span><span class="step__title">Explore</span><span class="step__sub">Search &amp; read the code</span></span></li>
+            <li class="step" data-step="edit"><span class="step__dot"><span>3</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg></span><span><span class="step__title">Edit</span><span class="step__sub">Apply a minimal diff</span></span></li>
+            <li class="step" data-step="test"><span class="step__dot"><span>4</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg></span><span><span class="step__title">Test</span><span class="step__sub">Prove it, then re-run</span></span></li>
+            <li class="step" data-step="ship"><span class="step__dot"><span>5</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg></span><span><span class="step__title">Ship</span><span class="step__sub">Commit &amp; open the PR</span></span></li>
+            <li class="agent__controls" role="presentation">
+              <button class="btn btn--sm" type="button" id="agent-toggle">Pause</button>
+              <button class="btn btn--sm btn--ghost" type="button" id="agent-restart">Restart</button>
+              <button class="btn btn--sm btn--ghost" type="button" id="agent-speed" aria-pressed="false">1×</button>
+              <span class="agent__status" id="agent-status" aria-live="polite">Waiting to start…</span>
+            </li>
+          </ol>
+
+          <div class="terminal">
+            <div class="panel__bar">
+              <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span>fable — agent session</span>
+              <span class="tag" id="agent-tools">0 tool calls</span>
+            </div>
+            <div class="terminal__body" id="terminal" aria-live="off"></div>
+          </div>
+
+          <div class="diff">
+            <div class="panel__bar">
+              <span class="diff__file" id="diff-file">working tree</span>
+              <span class="diff__stats" id="diff-stats"></span>
+            </div>
+            <div class="diff__body" id="diff">
+              <p class="diff__empty">No changes yet. The diff fills in as the agent edits.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Scroll story: lifestyle -->
-    <section class="landing-section landing-section--lifestyle" aria-labelledby="story-lifestyle">
-      <div class="landing-section__inner">
-        <div class="landing-section__copy">
-          <h2 id="story-lifestyle">Always on, wherever you are</h2>
-          <p>Home, café, coastal office — one account that follows how Cypriots move through the day.</p>
-          <a class="btn btn--primary" href="services/mobile-5g.html">Explore 5G</a>
+    <!-- ================================================================
+         BENCHMARKS
+         ================================================================ -->
+    <section class="section" id="benchmarks" aria-labelledby="bench-title">
+      <div class="container">
+        <div class="section__head">
+          <div class="reveal">
+            <p class="section__index">04 — Measured</p>
+            <h2 class="section__title" id="bench-title">Generation over generation, <span class="serif gradient-text">every axis moved.</span></h2>
+          </div>
+          <p class="section__lead reveal" style="--i:1">Relative capability across five task families. Bars animate in from zero so the deltas are easy to read.</p>
+        </div>
+
+        <div class="bench reveal">
+          <div class="bench__top">
+            <div class="bench__legend" id="bench-legend"></div>
+            <button class="btn btn--sm btn--ghost" type="button" id="bench-toggle" aria-pressed="false">Show as table</button>
+          </div>
+          <div class="bench__rows" id="bench-rows"></div>
+          <table class="bench__table" id="bench-table" hidden>
+            <caption class="visually-hidden">Capability scores by model generation</caption>
+            <thead><tr id="bench-table-head"></tr></thead>
+            <tbody id="bench-table-body"></tbody>
+          </table>
+          <p class="bench__note">Scores are illustrative demo data for this showcase, normalised to a 0–100 scale. They exist to demonstrate the visualisation, not to report published evaluations.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         CASE STUDY — the site the model built
+         ================================================================ -->
+    <section class="section" id="case-study" aria-labelledby="case-title">
+      <div class="container">
+        <div class="case">
+          <div class="case__copy reveal">
+            <p class="section__index">05 — Case study</p>
+            <h2 class="section__title" id="case-title">A ten-page telecom site, designed and built <span class="serif gradient-text">in one session.</span></h2>
+            <p class="section__lead">Given a single brief, the model produced <em>Cyprus Communications</em>: a cinematic landing page, a traditional corporate subsite with plan catalogs, careers and application flows, accessible forms with validation, and its own design documentation. It's embedded live on the right.</p>
+            <dl class="case__stats">
+              <div><dt>pages shipped</dt><dd>10</dd></div>
+              <div><dt>design modes</dt><dd>2</dd></div>
+              <div><dt>runtime dependencies</dt><dd>0</dd></div>
+              <div><dt>accessibility baseline</dt><dd>WCAG-minded</dd></div>
+            </dl>
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="cyprus-communications/index.html">Open the site</a>
+              <a class="btn btn--ghost" href="cyprus-communications/docs/README.md">Read its design docs</a>
+            </div>
+          </div>
+
+          <div class="device reveal" style="--i:1">
+            <div class="device__bar">
+              <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="device__url">cyprus-communications/index.html</span>
+            </div>
+            <div class="device__screen">
+              <iframe src="cyprus-communications/index.html" title="Live preview of the Cyprus Communications demo site" loading="lazy" tabindex="-1"></iframe>
+              <a class="device__overlay" href="cyprus-communications/index.html" aria-label="Open Cyprus Communications in full">
+                <span class="btn btn--primary btn--sm">Open full site ↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         UNDER THE HOOD
+         ================================================================ -->
+    <section class="section" id="how" aria-labelledby="how-title">
+      <div class="container">
+        <div class="section__head">
+          <div class="reveal">
+            <p class="section__index">06 — Under the hood</p>
+            <h2 class="section__title" id="how-title">No frameworks. No API keys. <span class="serif gradient-text">Just the web.</span></h2>
+          </div>
+          <p class="section__lead reveal" style="--i:1">This page is itself an artifact of the model's craft: hand-written HTML, CSS, and vanilla JavaScript, deployable anywhere a static file can live.</p>
+        </div>
+
+        <div class="facts">
+          <div class="fact reveal" style="--i:0">
+            <span class="fact__num">01</span>
+            <h3>Zero dependencies</h3>
+            <p>Canvas particle field, syntax highlighting, drag and drop, charts and the command palette are all written from scratch. The only network requests are web fonts.</p>
+          </div>
+          <div class="fact reveal" style="--i:1">
+            <span class="fact__num">02</span>
+            <h3>Honest simulations</h3>
+            <p>The demos replay scripted model output so they work offline and on GitHub Pages. Swap the fixtures for a real endpoint and the UI stays identical.</p>
+          </div>
+          <div class="fact reveal" style="--i:2">
+            <span class="fact__num">03</span>
+            <h3>Accessible by default</h3>
+            <p>Semantic landmarks, keyboard-operable controls, live regions for streamed text, a table fallback for the chart, and full <code>prefers-reduced-motion</code> support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Get started">
+      <div class="container">
+        <div class="cta-band reveal">
+          <span class="pill"><span class="pill__dot"></span> Ready when you are</span>
+          <h2>Point it at your codebase and watch it work.</h2>
+          <p>Fable 5 plans, edits, tests, and ships with the same care you saw above — on a single file or a monorepo.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#playground">Back to the playground</a>
+            <button class="btn btn--ghost" type="button" data-palette-open>Open command palette <span class="kbd">⌘K</span></button>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="site-footer__inner">
-      <div>
-        <h2>Cyprus Communications</h2>
-        <p>Demo telecom brand for a static GitHub Pages showcase. All content is fictional.</p>
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <a class="brand" href="#top">
+            <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+              <rect width="32" height="32" rx="8" fill="url(#brand-grad)"/>
+              <path d="M10 8h13v3.4h-9.2v4.5h8v3.4h-8V24H10z" fill="#06070b"/>
+            </svg>
+            <span>Fable</span>
+            <span class="brand__version">v5.1</span>
+          </a>
+          <p>A capability showcase built as a static demo. Model names, figures, and transcripts on this page are illustrative and run locally in your browser.</p>
+        </div>
+        <div>
+          <h2>Tour</h2>
+          <ul>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#playground">Playground</a></li>
+            <li><a href="#agent">Agent run</a></li>
+            <li><a href="#benchmarks">Benchmarks</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Artifacts</h2>
+          <ul>
+            <li><a href="cyprus-communications/index.html">Cyprus Communications</a></li>
+            <li><a href="cyprus-communications/sitemap.html">Site directory</a></li>
+            <li><a href="cyprus-communications/docs/design-system.md">Design system notes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Source</h2>
+          <ul>
+            <li><a href="styles/showcase.css">showcase.css</a></li>
+            <li><a href="js/playground.js">playground.js</a></li>
+            <li><a href="js/agent.js">agent.js</a></li>
+            <li><a href="README.md">README</a></li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <h2>Explore</h2>
-        <ul>
-          <li><a href="services/index.html">Services</a></li>
-          <li><a href="about/index.html">About</a></li>
-          <li><a href="careers/index.html">Careers</a></li>
-          <li><a href="contact/index.html">Contact</a></li>
-        </ul>
+      <div class="site-footer__meta">
+        <span>&copy; 2026 Fable 5 showcase · demo content</span>
+        <span>Press <span class="kbd">⌘K</span> to jump anywhere</span>
       </div>
-      <div>
-        <h2>Contact</h2>
-        <ul>
-          <li>12 Makarios Avenue, Nicosia 1065</li>
-          <li><a href="tel:+35722123456">+357 22 123 456</a></li>
-          <li><a href="mailto:hello@cypruscomm.demo">hello@cypruscomm.demo</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2>Legal</h2>
-        <ul>
-          <li><a href="sitemap.html">Site Directory</a></li>
-          <li><a href="docs/README.md">Documentation</a></li>
-          <li>Privacy (demo stub)</li>
-          <li>Terms (demo stub)</li>
-        </ul>
-      </div>
-    </div>
-    <div class="site-footer__meta">
-      <span>&copy; 2026 Cyprus Communications (demo)</span>
-      <a href="sitemap.html">Full site directory</a>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
-  <!-- Landing-only motion: hero fade + section IntersectionObserver reveals -->
-  <script src="js/landing-motion.js"></script>
+  <!-- Command palette -->
+  <div class="palette" id="palette" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
+    <div class="palette__panel">
+      <input class="palette__input" id="palette-input" type="text" placeholder="Jump to a section or run a demo…" aria-label="Search commands" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list">
+      <ul class="palette__list" id="palette-list" role="listbox"></ul>
+      <div class="palette__hint">
+        <span><span class="kbd">↑↓</span> navigate</span>
+        <span><span class="kbd">↵</span> select</span>
+        <span><span class="kbd">esc</span> close</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/showcase.js" defer></script>
+  <script src="js/skills.js" defer></script>
+  <script src="js/playground.js" defer></script>
+  <script src="js/agent.js" defer></script>
+  <script src="js/bench.js" defer></script>
 </body>
 </html>
